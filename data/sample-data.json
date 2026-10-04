@@ -1,0 +1,612 @@
+{
+  "profiles": [
+    {
+      "id": 1,
+      "name": "김도윤",
+      "department": "감사",
+      "introduction": "Excel과 데이터 정리를 좋아하며 새로운 업무를 배우는 데 적극적입니다.",
+      "work_keywords": [
+        "Excel",
+        "데이터분석",
+        "제조업"
+      ],
+      "interest_keywords": [
+        "러닝",
+        "야구",
+        "맛집"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 74
+    },
+    {
+      "id": 2,
+      "name": "이서윤",
+      "department": "감사",
+      "introduction": "자료를 꼼꼼하게 정리하고 다른 사람에게 설명하는 것을 좋아합니다.",
+      "work_keywords": [
+        "Excel",
+        "PPT",
+        "영어"
+      ],
+      "interest_keywords": [
+        "독서",
+        "카페",
+        "영화"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 62
+    },
+    {
+      "id": 3,
+      "name": "박준혁",
+      "department": "감사",
+      "introduction": "PPT와 발표자료 제작에 관심이 많고 사람들과 이야기하는 것을 좋아합니다.",
+      "work_keywords": [
+        "PPT",
+        "Excel",
+        "금융업"
+      ],
+      "interest_keywords": [
+        "축구",
+        "영화",
+        "맛집"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 81
+    },
+    {
+      "id": 4,
+      "name": "최하은",
+      "department": "감사",
+      "introduction": "데이터를 시각적으로 정리하고 새로운 도구를 활용하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "Python",
+        "데이터분석",
+        "IT"
+      ],
+      "interest_keywords": [
+        "사진",
+        "여행",
+        "카페"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 57
+    },
+    {
+      "id": 5,
+      "name": "정현우",
+      "department": "감사",
+      "introduction": "재무제표를 꼼꼼하게 살펴보고 회계 이슈를 찾아보는 것을 좋아합니다.",
+      "work_keywords": [
+        "회계",
+        "재무제표분석",
+        "제조업"
+      ],
+      "interest_keywords": [
+        "헬스",
+        "게임",
+        "야구"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 88
+    },
+    {
+      "id": 6,
+      "name": "한지민",
+      "department": "감사",
+      "introduction": "영어 자료를 읽고 핵심 내용을 정리하는 업무에 자신 있습니다.",
+      "work_keywords": [
+        "영어",
+        "리서치",
+        "헬스케어"
+      ],
+      "interest_keywords": [
+        "여행",
+        "음악",
+        "독서"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 69
+    },
+    {
+      "id": 7,
+      "name": "윤지호",
+      "department": "감사",
+      "introduction": "반복적인 자료 정리 업무를 효율적으로 개선하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "Excel",
+        "Python",
+        "업무자동화"
+      ],
+      "interest_keywords": [
+        "등산",
+        "사진",
+        "축구"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 53
+    },
+    {
+      "id": 8,
+      "name": "송예린",
+      "department": "감사",
+      "introduction": "복잡한 내용을 보기 쉽게 정리하고 전달하는 것을 좋아합니다.",
+      "work_keywords": [
+        "PPT",
+        "데이터시각화",
+        "유통업"
+      ],
+      "interest_keywords": [
+        "카페",
+        "영화",
+        "공연"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 84
+    },
+    {
+      "id": 9,
+      "name": "임재현",
+      "department": "감사",
+      "introduction": "제조업 관련 자료를 다뤄보았고 새로운 사람과 이야기하는 것을 좋아합니다.",
+      "work_keywords": [
+        "감사",
+        "제조업",
+        "재무제표검토"
+      ],
+      "interest_keywords": [
+        "축구",
+        "맛집",
+        "국내여행"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 61
+    },
+    {
+      "id": 10,
+      "name": "강수빈",
+      "department": "감사",
+      "introduction": "외국어 자료를 찾아보고 업무에 필요한 내용을 정리하는 것을 좋아합니다.",
+      "work_keywords": [
+        "영어",
+        "일본어",
+        "리서치"
+      ],
+      "interest_keywords": [
+        "일본여행",
+        "독서",
+        "카페"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 72
+    },
+    {
+      "id": 11,
+      "name": "조민석",
+      "department": "감사",
+      "introduction": "회계기준과 재무제표 분석에 관심이 많습니다.",
+      "work_keywords": [
+        "회계",
+        "재무제표분석",
+        "금융업"
+      ],
+      "interest_keywords": [
+        "야구",
+        "헬스",
+        "게임"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 77
+    },
+    {
+      "id": 12,
+      "name": "오채원",
+      "department": "감사",
+      "introduction": "Python을 활용한 데이터 분석과 시각화에 관심이 있습니다.",
+      "work_keywords": [
+        "Python",
+        "데이터분석",
+        "데이터시각화"
+      ],
+      "interest_keywords": [
+        "음악",
+        "사진",
+        "공연"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 66
+    },
+    {
+      "id": 13,
+      "name": "배성훈",
+      "department": "감사",
+      "introduction": "Excel 함수와 피벗테이블을 활용한 자료 정리에 익숙합니다.",
+      "work_keywords": [
+        "Excel",
+        "피벗테이블",
+        "데이터정리"
+      ],
+      "interest_keywords": [
+        "탁구",
+        "영화",
+        "맛집"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 90
+    },
+    {
+      "id": 14,
+      "name": "김나연",
+      "department": "감사",
+      "introduction": "세법 관련 자료를 찾아보고 핵심 내용을 정리하는 것을 좋아합니다.",
+      "work_keywords": [
+        "세무",
+        "리서치",
+        "영어"
+      ],
+      "interest_keywords": [
+        "독서",
+        "여행",
+        "카페"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 58
+    },
+    {
+      "id": 15,
+      "name": "이준서",
+      "department": "감사",
+      "introduction": "금융업 관련 자료와 재무제표를 분석해보는 것을 좋아합니다.",
+      "work_keywords": [
+        "금융업",
+        "재무제표분석",
+        "Excel"
+      ],
+      "interest_keywords": [
+        "러닝",
+        "야구",
+        "맛집"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 83
+    },
+    {
+      "id": 16,
+      "name": "박서현",
+      "department": "감사",
+      "introduction": "보고서와 발표자료를 깔끔하게 구성하는 것을 좋아합니다.",
+      "work_keywords": [
+        "PPT",
+        "보고서작성",
+        "유통업"
+      ],
+      "interest_keywords": [
+        "공연",
+        "카페",
+        "음악"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 71
+    },
+    {
+      "id": 17,
+      "name": "문현준",
+      "department": "감사",
+      "introduction": "업무에 필요한 데이터를 정리하고 분석하는 것을 좋아합니다.",
+      "work_keywords": [
+        "Excel",
+        "데이터분석",
+        "제조업"
+      ],
+      "interest_keywords": [
+        "등산",
+        "축구",
+        "국내여행"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 49
+    },
+    {
+      "id": 18,
+      "name": "신유진",
+      "department": "감사",
+      "introduction": "영어 자료와 산업 자료를 찾아보며 새로운 분야를 알아가는 것을 좋아합니다.",
+      "work_keywords": [
+        "영어",
+        "리서치",
+        "바이오"
+      ],
+      "interest_keywords": [
+        "영화",
+        "일본여행",
+        "헬스"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 76
+    },
+    {
+      "id": 19,
+      "name": "장우진",
+      "department": "감사",
+      "introduction": "Python과 데이터 분석을 업무에 활용하는 방법을 공부하고 있습니다.",
+      "work_keywords": [
+        "Python",
+        "데이터분석",
+        "IT"
+      ],
+      "interest_keywords": [
+        "게임",
+        "러닝",
+        "맛집"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 55
+    },
+    {
+      "id": 20,
+      "name": "류지안",
+      "department": "감사",
+      "introduction": "헬스케어 산업과 회계 이슈를 찾아보는 데 관심이 있습니다.",
+      "work_keywords": [
+        "헬스케어",
+        "회계",
+        "리서치"
+      ],
+      "interest_keywords": [
+        "독서",
+        "등산",
+        "여행"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 86
+    },
+    {
+      "id": 21,
+      "name": "홍준영",
+      "department": "감사",
+      "introduction": "PPT를 활용해 복잡한 내용을 보기 쉽게 표현하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "PPT",
+        "데이터시각화",
+        "IT"
+      ],
+      "interest_keywords": [
+        "야구",
+        "사진",
+        "영화"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 64
+    },
+    {
+      "id": 22,
+      "name": "윤서진",
+      "department": "택스",
+      "introduction": "Excel을 활용한 자료 정리와 세무 리서치에 관심이 있습니다.",
+      "work_keywords": [
+        "Excel",
+        "세무",
+        "리서치"
+      ],
+      "interest_keywords": [
+        "러닝",
+        "카페",
+        "맛집"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 68
+    },
+    {
+      "id": 23,
+      "name": "김태윤",
+      "department": "택스",
+      "introduction": "여러 산업의 세무 이슈를 찾아보고 정리하는 것을 좋아합니다.",
+      "work_keywords": [
+        "세무",
+        "제조업",
+        "유통업"
+      ],
+      "interest_keywords": [
+        "축구",
+        "여행",
+        "맛집"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 79
+    },
+    {
+      "id": 24,
+      "name": "정다은",
+      "department": "택스",
+      "introduction": "자료를 논리적으로 정리하고 핵심 내용을 전달하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "PPT",
+        "세무",
+        "영어"
+      ],
+      "interest_keywords": [
+        "음악",
+        "영화",
+        "공연"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 52
+    },
+    {
+      "id": 25,
+      "name": "최민재",
+      "department": "택스",
+      "introduction": "회계와 세무의 연결점을 공부하며 관련 자료를 찾아보고 있습니다.",
+      "work_keywords": [
+        "회계",
+        "세무",
+        "재무제표분석"
+      ],
+      "interest_keywords": [
+        "헬스",
+        "게임",
+        "영화"
+      ],
+      "contact_status": "뒤집힌 문어",
+      "contact_message": "나중에 연락 부탁드려요",
+      "manner_score": 43
+    },
+    {
+      "id": 26,
+      "name": "한서연",
+      "department": "택스",
+      "introduction": "영어 자료를 활용해 세무 관련 정보를 찾아 정리하는 것을 좋아합니다.",
+      "work_keywords": [
+        "영어",
+        "세무",
+        "리서치"
+      ],
+      "interest_keywords": [
+        "독서",
+        "카페",
+        "유럽여행"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 87
+    },
+    {
+      "id": 27,
+      "name": "이건우",
+      "department": "택스",
+      "introduction": "Excel을 활용해 반복적인 자료 정리 업무를 효율화하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "Excel",
+        "업무자동화",
+        "세무"
+      ],
+      "interest_keywords": [
+        "탁구",
+        "야구",
+        "맛집"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 60
+    },
+    {
+      "id": 28,
+      "name": "서지우",
+      "department": "딜",
+      "introduction": "IT 산업과 데이터 분석에 관심이 많고 새로운 기술을 배우는 것을 좋아합니다.",
+      "work_keywords": [
+        "IT",
+        "데이터분석",
+        "Python"
+      ],
+      "interest_keywords": [
+        "사진",
+        "일본여행",
+        "카페"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 82
+    },
+    {
+      "id": 29,
+      "name": "김현지",
+      "department": "딜",
+      "introduction": "바이오와 헬스케어 산업 자료를 찾아보고 분석하는 데 관심이 있습니다.",
+      "work_keywords": [
+        "헬스케어",
+        "바이오",
+        "데이터분석"
+      ],
+      "interest_keywords": [
+        "등산",
+        "독서",
+        "국내여행"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 73
+    },
+    {
+      "id": 30,
+      "name": "권민호",
+      "department": "딜",
+      "introduction": "Excel과 PPT를 활용해 자료를 정리하고 전달하는 것을 좋아합니다.",
+      "work_keywords": [
+        "Excel",
+        "PPT",
+        "금융업"
+      ],
+      "interest_keywords": [
+        "축구",
+        "맛집",
+        "여행"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 47
+    },
+    {
+      "id": 31,
+      "name": "백승민",
+      "department": "디지털",
+      "introduction": "Python으로 반복 업무를 자동화하고 데이터를 분석하는 일을 좋아합니다.",
+      "work_keywords": [
+        "Python",
+        "업무자동화",
+        "IT"
+      ],
+      "interest_keywords": [
+        "게임",
+        "러닝",
+        "카페"
+      ],
+      "contact_status": "밝은 문어",
+      "contact_message": "편하게 연락해주세요",
+      "manner_score": 78
+    },
+    {
+      "id": 32,
+      "name": "노하린",
+      "department": "디지털",
+      "introduction": "데이터를 보기 쉽게 시각화하고 새로운 디지털 도구를 익히는 데 관심이 많습니다.",
+      "work_keywords": [
+        "데이터시각화",
+        "데이터분석",
+        "영어"
+      ],
+      "interest_keywords": [
+        "사진",
+        "전시",
+        "여행"
+      ],
+      "contact_status": "보통 문어",
+      "contact_message": "확인 후 답변드릴게요",
+      "manner_score": 65
+    }
+  ]
+}

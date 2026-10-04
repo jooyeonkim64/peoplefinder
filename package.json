@@ -1,0 +1,12 @@
+{
+  "name": "people-finder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "People Finder - 동료의 경험·관심사를 키워드로 찾고 연결하는 서비스",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "reset": "node scripts/reset.js"
+  },
+  "engines": { "node": ">=18" }
+}

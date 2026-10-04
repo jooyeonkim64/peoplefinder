@@ -1,0 +1,1827 @@
+{
+  "version": 1,
+  "seq": {
+    "user": 1001,
+    "connection": 1,
+    "message": 1
+  },
+  "users": [
+    {
+      "id": 1,
+      "sampleId": 1,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 74,
+      "feedbackCount": 6,
+      "praise": [
+        2,
+        3,
+        2,
+        1
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790922771505
+        },
+        {
+          "item": 1,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "김도윤",
+      "dept": "감사",
+      "intro": "Excel과 데이터 정리를 좋아하며 새로운 업무를 배우는 데 적극적입니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "제조업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "러닝",
+          "exp": ""
+        },
+        {
+          "tag": "야구",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 2,
+      "sampleId": 2,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 62,
+      "feedbackCount": 3,
+      "praise": [
+        2,
+        1,
+        1,
+        0
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790832771505
+        },
+        {
+          "item": 1,
+          "ts": 1790407971505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "이서윤",
+      "dept": "감사",
+      "intro": "자료를 꼼꼼하게 정리하고 다른 사람에게 설명하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "영어",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 3,
+      "sampleId": 3,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 81,
+      "feedbackCount": 9,
+      "praise": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790742771505
+        },
+        {
+          "item": 0,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "박준혁",
+      "dept": "감사",
+      "intro": "PPT와 발표자료 제작에 관심이 많고 사람들과 이야기하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "금융업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "축구",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 4,
+      "sampleId": 4,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 57,
+      "feedbackCount": 1,
+      "praise": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790998371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "최하은",
+      "dept": "감사",
+      "intro": "데이터를 시각적으로 정리하고 새로운 도구를 활용하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "Python",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "IT",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 5,
+      "sampleId": 5,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 88,
+      "feedbackCount": 14,
+      "praise": [
+        5,
+        5,
+        4,
+        5
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790908371505
+        },
+        {
+          "item": 1,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "정현우",
+      "dept": "감사",
+      "intro": "재무제표를 꼼꼼하게 살펴보고 회계 이슈를 찾아보는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "회계",
+          "exp": ""
+        },
+        {
+          "tag": "재무제표분석",
+          "exp": ""
+        },
+        {
+          "tag": "제조업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "헬스",
+          "exp": ""
+        },
+        {
+          "tag": "게임",
+          "exp": ""
+        },
+        {
+          "tag": "야구",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 6,
+      "sampleId": 6,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 69,
+      "feedbackCount": 5,
+      "praise": [
+        2,
+        1,
+        2,
+        2
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1790818371505
+        },
+        {
+          "item": 3,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "한지민",
+      "dept": "감사",
+      "intro": "영어 자료를 읽고 핵심 내용을 정리하는 업무에 자신 있습니다.",
+      "work": [
+        {
+          "tag": "영어",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        },
+        {
+          "tag": "헬스케어",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "여행",
+          "exp": ""
+        },
+        {
+          "tag": "음악",
+          "exp": ""
+        },
+        {
+          "tag": "독서",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 7,
+      "sampleId": 7,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 53,
+      "feedbackCount": 1,
+      "praise": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790753571505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "윤지호",
+      "dept": "감사",
+      "intro": "반복적인 자료 정리 업무를 효율적으로 개선하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "Python",
+          "exp": ""
+        },
+        {
+          "tag": "업무자동화",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "등산",
+          "exp": ""
+        },
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "축구",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 8,
+      "sampleId": 8,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 84,
+      "feedbackCount": 11,
+      "praise": [
+        4,
+        3,
+        4,
+        4
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1791009171505
+        },
+        {
+          "item": 3,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "송예린",
+      "dept": "감사",
+      "intro": "복잡한 내용을 보기 쉽게 정리하고 전달하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "데이터시각화",
+          "exp": ""
+        },
+        {
+          "tag": "유통업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "카페",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        },
+        {
+          "tag": "공연",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 9,
+      "sampleId": 9,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 61,
+      "feedbackCount": 2,
+      "praise": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790919171505
+        },
+        {
+          "item": 1,
+          "ts": 1790667171505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "임재현",
+      "dept": "감사",
+      "intro": "제조업 관련 자료를 다뤄보았고 새로운 사람과 이야기하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "감사",
+          "exp": ""
+        },
+        {
+          "tag": "제조업",
+          "exp": ""
+        },
+        {
+          "tag": "재무제표검토",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "축구",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        },
+        {
+          "tag": "국내여행",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 10,
+      "sampleId": 10,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 72,
+      "feedbackCount": 6,
+      "praise": [
+        1,
+        2,
+        3,
+        2
+      ],
+      "recent": [
+        {
+          "item": 1,
+          "ts": 1790829171505
+        },
+        {
+          "item": 2,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "강수빈",
+      "dept": "감사",
+      "intro": "외국어 자료를 찾아보고 업무에 필요한 내용을 정리하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "영어",
+          "exp": ""
+        },
+        {
+          "tag": "일본어",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "일본여행",
+          "exp": ""
+        },
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 11,
+      "sampleId": 11,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 77,
+      "feedbackCount": 7,
+      "praise": [
+        1,
+        3,
+        3,
+        2
+      ],
+      "recent": [
+        {
+          "item": 1,
+          "ts": 1790739171505
+        },
+        {
+          "item": 2,
+          "ts": 1790321571505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "조민석",
+      "dept": "감사",
+      "intro": "회계기준과 재무제표 분석에 관심이 많습니다.",
+      "work": [
+        {
+          "tag": "회계",
+          "exp": ""
+        },
+        {
+          "tag": "재무제표분석",
+          "exp": ""
+        },
+        {
+          "tag": "금융업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "야구",
+          "exp": ""
+        },
+        {
+          "tag": "헬스",
+          "exp": ""
+        },
+        {
+          "tag": "게임",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 12,
+      "sampleId": 12,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 66,
+      "feedbackCount": 4,
+      "praise": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "recent": [
+        {
+          "item": 1,
+          "ts": 1790994771505
+        },
+        {
+          "item": 2,
+          "ts": 1790753571505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "오채원",
+      "dept": "감사",
+      "intro": "Python을 활용한 데이터 분석과 시각화에 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "Python",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "데이터시각화",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "음악",
+          "exp": ""
+        },
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "공연",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 13,
+      "sampleId": 13,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 90,
+      "feedbackCount": 15,
+      "praise": [
+        5,
+        6,
+        4,
+        5
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790904771505
+        },
+        {
+          "item": 0,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "배성훈",
+      "dept": "감사",
+      "intro": "Excel 함수와 피벗테이블을 활용한 자료 정리에 익숙합니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "피벗테이블",
+          "exp": ""
+        },
+        {
+          "tag": "데이터정리",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "탁구",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 14,
+      "sampleId": 14,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 58,
+      "feedbackCount": 2,
+      "praise": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "recent": [
+        {
+          "item": 1,
+          "ts": 1790839971505
+        },
+        {
+          "item": 2,
+          "ts": 1790407971505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "김나연",
+      "dept": "감사",
+      "intro": "세법 관련 자료를 찾아보고 핵심 내용을 정리하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        },
+        {
+          "tag": "영어",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 15,
+      "sampleId": 15,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 83,
+      "feedbackCount": 10,
+      "praise": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1790749971505
+        },
+        {
+          "item": 3,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "이준서",
+      "dept": "감사",
+      "intro": "금융업 관련 자료와 재무제표를 분석해보는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "금융업",
+          "exp": ""
+        },
+        {
+          "tag": "재무제표분석",
+          "exp": ""
+        },
+        {
+          "tag": "Excel",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "러닝",
+          "exp": ""
+        },
+        {
+          "tag": "야구",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 16,
+      "sampleId": 16,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 71,
+      "feedbackCount": 5,
+      "praise": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1791005571505
+        },
+        {
+          "item": 1,
+          "ts": 1790667171505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "박서현",
+      "dept": "감사",
+      "intro": "보고서와 발표자료를 깔끔하게 구성하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "보고서작성",
+          "exp": ""
+        },
+        {
+          "tag": "유통업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "공연",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        },
+        {
+          "tag": "음악",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 17,
+      "sampleId": 17,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 49,
+      "feedbackCount": 0,
+      "praise": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "recent": [],
+      "createdAt": 1791099171505,
+      "name": "문현준",
+      "dept": "감사",
+      "intro": "업무에 필요한 데이터를 정리하고 분석하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "제조업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "등산",
+          "exp": ""
+        },
+        {
+          "tag": "축구",
+          "exp": ""
+        },
+        {
+          "tag": "국내여행",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 18,
+      "sampleId": 18,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 76,
+      "feedbackCount": 7,
+      "praise": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790825571505
+        },
+        {
+          "item": 1,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "신유진",
+      "dept": "감사",
+      "intro": "영어 자료와 산업 자료를 찾아보며 새로운 분야를 알아가는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "영어",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        },
+        {
+          "tag": "바이오",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "영화",
+          "exp": ""
+        },
+        {
+          "tag": "일본여행",
+          "exp": ""
+        },
+        {
+          "tag": "헬스",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 19,
+      "sampleId": 19,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 55,
+      "feedbackCount": 1,
+      "praise": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790735571505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "장우진",
+      "dept": "감사",
+      "intro": "Python과 데이터 분석을 업무에 활용하는 방법을 공부하고 있습니다.",
+      "work": [
+        {
+          "tag": "Python",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "IT",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "게임",
+          "exp": ""
+        },
+        {
+          "tag": "러닝",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 20,
+      "sampleId": 20,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 86,
+      "feedbackCount": 12,
+      "praise": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "recent": [
+        {
+          "item": 1,
+          "ts": 1790991171505
+        },
+        {
+          "item": 2,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "류지안",
+      "dept": "감사",
+      "intro": "헬스케어 산업과 회계 이슈를 찾아보는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "헬스케어",
+          "exp": ""
+        },
+        {
+          "tag": "회계",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "등산",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 21,
+      "sampleId": 21,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 64,
+      "feedbackCount": 3,
+      "praise": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790926371505
+        },
+        {
+          "item": 0,
+          "ts": 1790667171505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "홍준영",
+      "dept": "감사",
+      "intro": "PPT를 활용해 복잡한 내용을 보기 쉽게 표현하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "데이터시각화",
+          "exp": ""
+        },
+        {
+          "tag": "IT",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "야구",
+          "exp": ""
+        },
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 22,
+      "sampleId": 22,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 68,
+      "feedbackCount": 4,
+      "praise": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1790836371505
+        },
+        {
+          "item": 0,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "윤서진",
+      "dept": "택스",
+      "intro": "Excel을 활용한 자료 정리와 세무 리서치에 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "러닝",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 23,
+      "sampleId": 23,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 79,
+      "feedbackCount": 8,
+      "praise": [
+        2,
+        3,
+        3,
+        3
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790746371505
+        },
+        {
+          "item": 1,
+          "ts": 1790321571505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "김태윤",
+      "dept": "택스",
+      "intro": "여러 산업의 세무 이슈를 찾아보고 정리하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "제조업",
+          "exp": ""
+        },
+        {
+          "tag": "유통업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "축구",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 24,
+      "sampleId": 24,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 52,
+      "feedbackCount": 1,
+      "praise": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1791001971505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "정다은",
+      "dept": "택스",
+      "intro": "자료를 논리적으로 정리하고 핵심 내용을 전달하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "영어",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "음악",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        },
+        {
+          "tag": "공연",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 25,
+      "sampleId": 25,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 43,
+      "feedbackCount": 0,
+      "praise": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "recent": [],
+      "createdAt": 1791099171505,
+      "name": "최민재",
+      "dept": "택스",
+      "intro": "회계와 세무의 연결점을 공부하며 관련 자료를 찾아보고 있습니다.",
+      "work": [
+        {
+          "tag": "회계",
+          "exp": ""
+        },
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "재무제표분석",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "헬스",
+          "exp": ""
+        },
+        {
+          "tag": "게임",
+          "exp": ""
+        },
+        {
+          "tag": "영화",
+          "exp": ""
+        }
+      ],
+      "status": 2
+    },
+    {
+      "id": 26,
+      "sampleId": 26,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 87,
+      "feedbackCount": 13,
+      "praise": [
+        4,
+        4,
+        5,
+        4
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1790821971505
+        },
+        {
+          "item": 3,
+          "ts": 1790407971505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "한서연",
+      "dept": "택스",
+      "intro": "영어 자료를 활용해 세무 관련 정보를 찾아 정리하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "영어",
+          "exp": ""
+        },
+        {
+          "tag": "세무",
+          "exp": ""
+        },
+        {
+          "tag": "리서치",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        },
+        {
+          "tag": "유럽여행",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 27,
+      "sampleId": 27,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 60,
+      "feedbackCount": 2,
+      "praise": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1790731971505
+        },
+        {
+          "item": 3,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "이건우",
+      "dept": "택스",
+      "intro": "Excel을 활용해 반복적인 자료 정리 업무를 효율화하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "업무자동화",
+          "exp": ""
+        },
+        {
+          "tag": "세무",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "탁구",
+          "exp": ""
+        },
+        {
+          "tag": "야구",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 28,
+      "sampleId": 28,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 82,
+      "feedbackCount": 10,
+      "praise": [
+        4,
+        3,
+        3,
+        3
+      ],
+      "recent": [
+        {
+          "item": 3,
+          "ts": 1791012771505
+        },
+        {
+          "item": 0,
+          "ts": 1790667171505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "서지우",
+      "dept": "딜",
+      "intro": "IT 산업과 데이터 분석에 관심이 많고 새로운 기술을 배우는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "IT",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "Python",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "일본여행",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 29,
+      "sampleId": 29,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 73,
+      "feedbackCount": 6,
+      "praise": [
+        3,
+        2,
+        1,
+        2
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790922771505
+        },
+        {
+          "item": 1,
+          "ts": 1790494371505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "김현지",
+      "dept": "딜",
+      "intro": "바이오와 헬스케어 산업 자료를 찾아보고 분석하는 데 관심이 있습니다.",
+      "work": [
+        {
+          "tag": "헬스케어",
+          "exp": ""
+        },
+        {
+          "tag": "바이오",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "등산",
+          "exp": ""
+        },
+        {
+          "tag": "독서",
+          "exp": ""
+        },
+        {
+          "tag": "국내여행",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 30,
+      "sampleId": 30,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 47,
+      "feedbackCount": 0,
+      "praise": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "recent": [],
+      "createdAt": 1791099171505,
+      "name": "권민호",
+      "dept": "딜",
+      "intro": "Excel과 PPT를 활용해 자료를 정리하고 전달하는 것을 좋아합니다.",
+      "work": [
+        {
+          "tag": "Excel",
+          "exp": ""
+        },
+        {
+          "tag": "PPT",
+          "exp": ""
+        },
+        {
+          "tag": "금융업",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "축구",
+          "exp": ""
+        },
+        {
+          "tag": "맛집",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 31,
+      "sampleId": 31,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 78,
+      "feedbackCount": 8,
+      "praise": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "recent": [
+        {
+          "item": 0,
+          "ts": 1790742771505
+        },
+        {
+          "item": 1,
+          "ts": 1790407971505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "백승민",
+      "dept": "디지털",
+      "intro": "Python으로 반복 업무를 자동화하고 데이터를 분석하는 일을 좋아합니다.",
+      "work": [
+        {
+          "tag": "Python",
+          "exp": ""
+        },
+        {
+          "tag": "업무자동화",
+          "exp": ""
+        },
+        {
+          "tag": "IT",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "게임",
+          "exp": ""
+        },
+        {
+          "tag": "러닝",
+          "exp": ""
+        },
+        {
+          "tag": "카페",
+          "exp": ""
+        }
+      ],
+      "status": 0
+    },
+    {
+      "id": 32,
+      "sampleId": 32,
+      "email": null,
+      "passHash": null,
+      "profileDone": true,
+      "manner": 65,
+      "feedbackCount": 3,
+      "praise": [
+        1,
+        0,
+        2,
+        1
+      ],
+      "recent": [
+        {
+          "item": 2,
+          "ts": 1790998371505
+        },
+        {
+          "item": 3,
+          "ts": 1790580771505
+        }
+      ],
+      "createdAt": 1791099171505,
+      "name": "노하린",
+      "dept": "디지털",
+      "intro": "데이터를 보기 쉽게 시각화하고 새로운 디지털 도구를 익히는 데 관심이 많습니다.",
+      "work": [
+        {
+          "tag": "데이터시각화",
+          "exp": ""
+        },
+        {
+          "tag": "데이터분석",
+          "exp": ""
+        },
+        {
+          "tag": "영어",
+          "exp": ""
+        }
+      ],
+      "interest": [
+        {
+          "tag": "사진",
+          "exp": ""
+        },
+        {
+          "tag": "전시",
+          "exp": ""
+        },
+        {
+          "tag": "여행",
+          "exp": ""
+        }
+      ],
+      "status": 1
+    }
+  ],
+  "sessions": {},
+  "keywords": {},
+  "connections": [],
+  "messages": []
+}

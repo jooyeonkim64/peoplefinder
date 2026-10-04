@@ -357,6 +357,69 @@ button.chip { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- 메시지 입력 · 저장 상태 ---------- */
+.composer { display: flex; gap: 8px; align-items: flex-end; }
+.composer .textarea { min-height: 48px; max-height: 160px; padding: 10px 12px; font-size: 14.5px; }
+.composer .btn { flex: none; padding: 11px 16px; font-size: 14px; }
+.mode-note { text-align: center; }
+body.busy, body.busy button { cursor: progress; }
+
+/* ---------- 첫 화면 인트로: 바다에서 문어들이 손을 잡아요 ---------- */
+#intro {
+  position: fixed; inset: 0; z-index: 100; overflow: hidden; cursor: pointer;
+  background: linear-gradient(180deg, #BAE6FD 0%, #67C6F5 32%, #2F6FE4 72%, #1E3A8A 100%);
+  transition: opacity .6s ease;
+}
+#intro.out { opacity: 0; pointer-events: none; }
+.io-ray { position: absolute; top: -20%; width: 90px; height: 75%; background: linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,0)); filter: blur(8px); transform-origin: top center; animation: ioRay 6s ease-in-out infinite alternate; }
+@keyframes ioRay { from { opacity: .35; } to { opacity: .8; } }
+.io-bubble { position: absolute; bottom: -24px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.75); background: rgba(255,255,255,.15); animation: ioBubble linear infinite; }
+@keyframes ioBubble { from { transform: translate(0, 0); } 50% { transform: translate(8px, -55vh); } to { transform: translate(-4px, -112vh); } }
+.io-sea { position: absolute; left: 0; right: 0; bottom: 0; height: 90px; }
+.io-sea svg { position: absolute; bottom: 0; width: 200%; height: 100%; animation: ioSea 9s linear infinite; }
+.io-sea svg + svg { animation-duration: 14s; opacity: .7; }
+@keyframes ioSea { to { transform: translateX(-50%); } }
+
+.io { position: absolute; width: var(--w); left: var(--sx); top: var(--sy); opacity: 0;
+  transition: left 1.3s cubic-bezier(.45,.05,.25,1), top 1.3s cubic-bezier(.45,.05,.25,1);
+  animation: ioIn .6s ease-out forwards; animation-delay: calc(var(--i) * 90ms); }
+@keyframes ioIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.io-bob { animation: ioFloat 2.6s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -0.55s); }
+@keyframes ioFloat { from { transform: translateY(-7px) rotate(-7deg); } to { transform: translateY(9px) rotate(6deg); } }
+.io svg { display: block; width: 100%; height: auto; overflow: visible; }
+.io-body { transform-box: fill-box; transform-origin: 50% 50%; }
+.io.flip .io-body { transform: rotate(180deg); transition: transform .8s cubic-bezier(.3,1.5,.5,1) .55s; }
+.io-arms { opacity: 0; transition: opacity .05s linear 1.05s; }
+.io-arms path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .5s ease-out 1.05s; }
+.io-hand { opacity: 0; transition: opacity .25s ease 1.45s; }
+.io-face2 { opacity: 0; }
+.io-face1, .io-face2 { transition: opacity .2s ease .95s; }
+
+#intro.linked .io { left: calc(50% + var(--rx) - var(--w) / 2); top: 38%; }
+#intro.linked .io-bob { animation: ioWave 1.3s ease-in-out infinite alternate; animation-delay: calc(var(--i) * 0.15s); }
+@keyframes ioWave { from { transform: translateY(-5px); } to { transform: translateY(6px); } }
+#intro.linked .io.flip .io-body { transform: rotate(0deg); }
+#intro.linked .io-arms { opacity: 1; }
+#intro.linked .io-arms path { stroke-dashoffset: 0; }
+#intro.linked .io-hand { opacity: 1; }
+#intro.linked .io.swap .io-face1 { opacity: 0; }
+#intro.linked .io-face2 { opacity: 1; }
+
+.io-heart { position: absolute; width: 16px; left: calc(50% + var(--hx) - 8px); top: calc(38% + var(--w) * .2); opacity: 0; }
+#intro.linked .io-heart { animation: ioHeart 1.5s ease-out forwards; animation-delay: calc(1.7s + var(--i) * .12s); }
+@keyframes ioHeart { 0% { opacity: 0; transform: translateY(6px) scale(.4); } 30% { opacity: 1; transform: translateY(-6px) scale(1.1); } 100% { opacity: 0; transform: translateY(-34px) scale(.9); } }
+
+.io-title { position: absolute; left: 0; right: 0; top: calc(38% + var(--w) * 1.25); text-align: center; color: #fff; padding: 0 24px;
+  opacity: 0; transform: translateY(12px); transition: opacity .6s ease 1.9s, transform .6s ease 1.9s; text-shadow: 0 2px 12px rgba(30,58,138,.35); }
+.io-title b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; }
+.io-title span { font-size: 14.5px; opacity: .92; }
+#intro.linked .io-title { opacity: 1; transform: none; }
+.io-skip { position: absolute; right: 14px; top: calc(14px + env(safe-area-inset-top, 0px)); border: 0; border-radius: 999px;
+  background: rgba(255,255,255,.25); color: #fff; font-size: 13px; font-weight: 600; padding: 7px 14px; backdrop-filter: blur(6px); }
+#intro.still .io { opacity: 1; animation: none; transition: none; }
+#intro.still * { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .io { opacity: 1; } }
 </style>
 </head>
 <body>
@@ -427,21 +490,21 @@ button.chip { cursor: pointer; }
 </div>
 <div id="overlay"></div>
 <div id="toastHost" aria-live="polite"></div>
+<div id="intro"></div>
 
+<script src="core.js"></script>
 <script>
 /* =====================================================================
-   People Finder 프로토타입
-   - 데이터: 샘플데이터.json (가상 프로필 30명)
+   People Finder 화면
    - 문구: 화면별버튼.md 우선, 톤·색·규칙: design.md
+   - 저장: 서버(npm start)로 열면 storage/db.json에 저장되어 모두가 공유하고,
+           서버 없이 정적 호스팅으로 열면 이 브라우저에만 저장돼요(보여주기용).
    ===================================================================== */
 
-const RAW = {"profiles": [{"id": 1, "name": "김도윤", "department": "감사", "introduction": "Excel과 데이터 정리를 좋아하며 새로운 업무를 배우는 데 적극적입니다.", "work_keywords": ["Excel", "데이터분석", "제조업"], "interest_keywords": ["러닝", "야구", "맛집"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 74}, {"id": 2, "name": "이서윤", "department": "감사", "introduction": "자료를 꼼꼼하게 정리하고 다른 사람에게 설명하는 것을 좋아합니다.", "work_keywords": ["Excel", "PPT", "영어"], "interest_keywords": ["독서", "카페", "영화"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 62}, {"id": 3, "name": "박준혁", "department": "감사", "introduction": "PPT와 발표자료 제작에 관심이 많고 사람들과 이야기하는 것을 좋아합니다.", "work_keywords": ["PPT", "Excel", "금융업"], "interest_keywords": ["축구", "영화", "맛집"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 81}, {"id": 4, "name": "최하은", "department": "감사", "introduction": "데이터를 시각적으로 정리하고 새로운 도구를 활용하는 데 관심이 있습니다.", "work_keywords": ["Python", "데이터분석", "IT"], "interest_keywords": ["사진", "여행", "카페"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 57}, {"id": 5, "name": "정현우", "department": "감사", "introduction": "재무제표를 꼼꼼하게 살펴보고 회계 이슈를 찾아보는 것을 좋아합니다.", "work_keywords": ["회계", "재무제표분석", "제조업"], "interest_keywords": ["헬스", "게임", "야구"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 88}, {"id": 6, "name": "한지민", "department": "감사", "introduction": "영어 자료를 읽고 핵심 내용을 정리하는 업무에 자신 있습니다.", "work_keywords": ["영어", "리서치", "헬스케어"], "interest_keywords": ["여행", "음악", "독서"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 69}, {"id": 7, "name": "윤지호", "department": "감사", "introduction": "반복적인 자료 정리 업무를 효율적으로 개선하는 데 관심이 있습니다.", "work_keywords": ["Excel", "Python", "업무자동화"], "interest_keywords": ["등산", "사진", "축구"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 53}, {"id": 8, "name": "송예린", "department": "감사", "introduction": "복잡한 내용을 보기 쉽게 정리하고 전달하는 것을 좋아합니다.", "work_keywords": ["PPT", "데이터시각화", "유통업"], "interest_keywords": ["카페", "영화", "공연"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 84}, {"id": 9, "name": "임재현", "department": "감사", "introduction": "제조업 관련 자료를 다뤄보았고 새로운 사람과 이야기하는 것을 좋아합니다.", "work_keywords": ["감사", "제조업", "재무제표검토"], "interest_keywords": ["축구", "맛집", "국내여행"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 61}, {"id": 10, "name": "강수빈", "department": "감사", "introduction": "외국어 자료를 찾아보고 업무에 필요한 내용을 정리하는 것을 좋아합니다.", "work_keywords": ["영어", "일본어", "리서치"], "interest_keywords": ["일본여행", "독서", "카페"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 72}, {"id": 11, "name": "조민석", "department": "감사", "introduction": "회계기준과 재무제표 분석에 관심이 많습니다.", "work_keywords": ["회계", "재무제표분석", "금융업"], "interest_keywords": ["야구", "헬스", "게임"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 77}, {"id": 12, "name": "오채원", "department": "감사", "introduction": "Python을 활용한 데이터 분석과 시각화에 관심이 있습니다.", "work_keywords": ["Python", "데이터분석", "데이터시각화"], "interest_keywords": ["음악", "사진", "공연"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 66}, {"id": 13, "name": "배성훈", "department": "감사", "introduction": "Excel 함수와 피벗테이블을 활용한 자료 정리에 익숙합니다.", "work_keywords": ["Excel", "피벗테이블", "데이터정리"], "interest_keywords": ["탁구", "영화", "맛집"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 90}, {"id": 14, "name": "김나연", "department": "감사", "introduction": "세법 관련 자료를 찾아보고 핵심 내용을 정리하는 것을 좋아합니다.", "work_keywords": ["세무", "리서치", "영어"], "interest_keywords": ["독서", "여행", "카페"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 58}, {"id": 15, "name": "이준서", "department": "감사", "introduction": "금융업 관련 자료와 재무제표를 분석해보는 것을 좋아합니다.", "work_keywords": ["금융업", "재무제표분석", "Excel"], "interest_keywords": ["러닝", "야구", "맛집"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 83}, {"id": 16, "name": "박서현", "department": "감사", "introduction": "보고서와 발표자료를 깔끔하게 구성하는 것을 좋아합니다.", "work_keywords": ["PPT", "보고서작성", "유통업"], "interest_keywords": ["공연", "카페", "음악"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 71}, {"id": 17, "name": "문현준", "department": "감사", "introduction": "업무에 필요한 데이터를 정리하고 분석하는 것을 좋아합니다.", "work_keywords": ["Excel", "데이터분석", "제조업"], "interest_keywords": ["등산", "축구", "국내여행"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 49}, {"id": 18, "name": "신유진", "department": "감사", "introduction": "영어 자료와 산업 자료를 찾아보며 새로운 분야를 알아가는 것을 좋아합니다.", "work_keywords": ["영어", "리서치", "바이오"], "interest_keywords": ["영화", "일본여행", "헬스"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 76}, {"id": 19, "name": "장우진", "department": "감사", "introduction": "Python과 데이터 분석을 업무에 활용하는 방법을 공부하고 있습니다.", "work_keywords": ["Python", "데이터분석", "IT"], "interest_keywords": ["게임", "러닝", "맛집"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 55}, {"id": 20, "name": "류지안", "department": "감사", "introduction": "헬스케어 산업과 회계 이슈를 찾아보는 데 관심이 있습니다.", "work_keywords": ["헬스케어", "회계", "리서치"], "interest_keywords": ["독서", "등산", "여행"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 86}, {"id": 21, "name": "홍준영", "department": "감사", "introduction": "PPT를 활용해 복잡한 내용을 보기 쉽게 표현하는 데 관심이 있습니다.", "work_keywords": ["PPT", "데이터시각화", "IT"], "interest_keywords": ["야구", "사진", "영화"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 64}, {"id": 22, "name": "윤서진", "department": "택스", "introduction": "Excel을 활용한 자료 정리와 세무 리서치에 관심이 있습니다.", "work_keywords": ["Excel", "세무", "리서치"], "interest_keywords": ["러닝", "카페", "맛집"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 68}, {"id": 23, "name": "김태윤", "department": "택스", "introduction": "여러 산업의 세무 이슈를 찾아보고 정리하는 것을 좋아합니다.", "work_keywords": ["세무", "제조업", "유통업"], "interest_keywords": ["축구", "여행", "맛집"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 79}, {"id": 24, "name": "정다은", "department": "택스", "introduction": "자료를 논리적으로 정리하고 핵심 내용을 전달하는 데 관심이 있습니다.", "work_keywords": ["PPT", "세무", "영어"], "interest_keywords": ["음악", "영화", "공연"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 52}, {"id": 25, "name": "최민재", "department": "택스", "introduction": "회계와 세무의 연결점을 공부하며 관련 자료를 찾아보고 있습니다.", "work_keywords": ["회계", "세무", "재무제표분석"], "interest_keywords": ["헬스", "게임", "영화"], "contact_status": "뒤집힌 문어", "contact_message": "나중에 연락 부탁드려요", "manner_score": 43}, {"id": 26, "name": "한서연", "department": "택스", "introduction": "영어 자료를 활용해 세무 관련 정보를 찾아 정리하는 것을 좋아합니다.", "work_keywords": ["영어", "세무", "리서치"], "interest_keywords": ["독서", "카페", "유럽여행"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 87}, {"id": 27, "name": "이건우", "department": "택스", "introduction": "Excel을 활용해 반복적인 자료 정리 업무를 효율화하는 데 관심이 있습니다.", "work_keywords": ["Excel", "업무자동화", "세무"], "interest_keywords": ["탁구", "야구", "맛집"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 60}, {"id": 28, "name": "서지우", "department": "딜", "introduction": "IT 산업과 데이터 분석에 관심이 많고 새로운 기술을 배우는 것을 좋아합니다.", "work_keywords": ["IT", "데이터분석", "Python"], "interest_keywords": ["사진", "일본여행", "카페"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 82}, {"id": 29, "name": "김현지", "department": "딜", "introduction": "바이오와 헬스케어 산업 자료를 찾아보고 분석하는 데 관심이 있습니다.", "work_keywords": ["헬스케어", "바이오", "데이터분석"], "interest_keywords": ["등산", "독서", "국내여행"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 73}, {"id": 30, "name": "권민호", "department": "딜", "introduction": "Excel과 PPT를 활용해 자료를 정리하고 전달하는 것을 좋아합니다.", "work_keywords": ["Excel", "PPT", "금융업"], "interest_keywords": ["축구", "맛집", "여행"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 47}, {"id": 31, "name": "백승민", "department": "디지털", "introduction": "Python으로 반복 업무를 자동화하고 데이터를 분석하는 일을 좋아합니다.", "work_keywords": ["Python", "업무자동화", "IT"], "interest_keywords": ["게임", "러닝", "카페"], "contact_status": "밝은 문어", "contact_message": "편하게 연락해주세요", "manner_score": 78}, {"id": 32, "name": "노하린", "department": "디지털", "introduction": "데이터를 보기 쉽게 시각화하고 새로운 디지털 도구를 익히는 데 관심이 많습니다.", "work_keywords": ["데이터시각화", "데이터분석", "영어"], "interest_keywords": ["사진", "전시", "여행"], "contact_status": "보통 문어", "contact_message": "확인 후 답변드릴게요", "manner_score": 65}]};
-
-/* ---------- 설정값 (design.md 확정 시 여기만 수정) ---------- */
+/* ---------- 설정값 ---------- */
 const MASK_NAMES = false;           // true로 바꾸면 '김OO'처럼 성 + OO으로 표시
-const MANNER_START = 50;            // 시작값
-const MANNER_STEP = 0.1;            // 피드백 1건마다 남은 점수의 10%
 const MANNER_DISPLAY_MAX = 99;      // 화면 표시 상한
+const POLL_MS = 4000;               // 새 메시지 확인 주기
 
 const DEPTS = [
   { key: '감사', label: 'Assurance 본부' },
@@ -459,7 +522,7 @@ const greeting = t => `안녕하세요! ${t} 관련해서 궁금한 점이 생�
 const QUICK = ['5분만 여쭤봐도 될까요?', '화면 공유 가능하실까요?', '잠시 같이 확인해주실 수 있을까요?'];
 
 /* 키워드 구조: 카테고리 > 태그 > 한 줄 경험 (기획안 · design.md 10)
-   샘플데이터에 한 줄 경험이 없어 태그별 예시 문구를 임시로 붙였습니다. */
+   샘플데이터에 한 줄 경험이 없어 태그별 예시 문구를 붙였어요. */
 const KW = {
   'Excel': ['업무', ['피벗테이블로 데이터 정리', 'VLOOKUP·SUMIFS로 대사 자료 작성', '매크로로 반복 작업 줄이기']],
   'PPT': ['업무', ['보고서용 발표자료 템플릿 제작', '복잡한 표를 한 장 도식으로 정리']],
@@ -504,21 +567,21 @@ const KW = {
   '탁구': ['취미', ['동호회 탁구']],
   '전시': ['취미', ['미술관·사진전 관람']]
 };
-/* 프로필 등록 화면의 선택지 (화면별버튼.md 2. 키워드 예시) */
+/* 프로필 등록 화면의 기본 선택지 (화면별버튼.md 2. 키워드 예시) */
 const PICK_WORK = [['업무', ['Excel', 'PPT', 'Python']], ['언어', ['영어', '일본어']], ['직무', ['제조업', '금융업']]];
 const PICK_INTEREST = ['러닝', '축구', '야구', '여행', '독서', '맛집'];
+const CATS = ['업무', '언어', '직무', '취미'];
 
 /* ---------- 유틸 ---------- */
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = s => String(s || '').toLowerCase().replace(/\s+/g, '');
 const deptLabel = k => (DEPTS.find(d => d.key === k) || { label: k ? k + ' 본부' : '' }).label;
-const CATS = ['업무', '언어', '직무', '취미'];
-// 키워드 카테고리: 기본 사전(KW) → 사용자가 새로 등록한 키워드(S.customKw) → 기본값
-const kwCat = (tag, fallback) => (KW[tag] ? KW[tag][0] : (S.customKw[tag] || (ui.ob && ui.ob.cats && ui.ob.cats[tag]) || fallback));
+// 키워드 카테고리: 기본 사전(KW) → 사용자가 등록한 키워드(서버) → 지금 입력 중인 키워드 → 기본값
+const kwCat = (tag, fallback) => (KW[tag] ? KW[tag][0] : (S.keywords[tag] || (ui.ob && ui.ob.cats && ui.ob.cats[tag]) || fallback));
 const LANG_WORDS = ['한국어', '중국어', '스페인어', '독일어', '프랑스어', '베트남어', '러시아어', '아랍어', '태국어', '이탈리아어', '포르투갈어', '인도네시아어', '광둥어'];
 const INDUSTRY_WORDS = ['반도체', '자동차', '에너지', '부동산', '물류', '건설', '통신', '화학', '철강', '조선', '항공', '엔터테인먼트', '공공', '게임산업', '이커머스', '플랫폼'];
-// 새 업무 키워드의 카테고리 자동 분류: '~어'는 언어, '~업'·산업명은 직무, 나머지는 업무
+// 새 업무 키워드 자동 분류: '~어'는 언어, '~업'·산업명은 직무, 나머지는 업무
 function guessCat(tag) {
   const t = tag.replace(/\s+/g, '');
   if (LANG_WORDS.includes(t) || (/어$/.test(t) && t.length <= 6)) return '언어';
@@ -527,7 +590,6 @@ function guessCat(tag) {
 }
 const kwExp = (tag, seed) => { const e = KW[tag]; return e ? e[1][seed % e[1].length] : ''; };
 const shownScore = m => Math.min(MANNER_DISPLAY_MAX, Math.round(m));   // 저장은 소수점, 표시만 반올림
-const nextScore = m => m + (100 - m) * MANNER_STEP;
 const DAY = 86400000;
 function ago(ts) {
   const d = Date.now() - ts;
@@ -543,77 +605,108 @@ function tier(m) {
   return { text: '이제 시작한 동료', spark: false };
 }
 
-/* ---------- 저장 (브라우저에만 저장되는 시연용 상태) ---------- */
-const STORE = 'peoplefinder-demo-v2';
-function loadStore() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch (e) { return {}; } }
-const saved = loadStore();
-const S = {
-  loggedIn: !!saved.loggedIn,
-  account: saved.account || null,     // { name, dept, email }
-  me: saved.me || null,               // { intro, work:[{tag,exp}], interest:[{tag,exp}], status }
-  messages: saved.messages || [],
-  overrides: saved.overrides || {},   // 피드백으로 바뀐 매너지수
-  customKw: saved.customKw || {}      // 가입·프로필 수정 때 새로 등록된 키워드 { 태그: 카테고리 }
-};
-function persist() {
-  try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) { /* 저장이 안 돼도 화면은 그대로 동작 */ }
-}
+/* =====================================================================
+   저장소 연결
+   ===================================================================== */
+const B = { mode: null, token: null };   // mode: 'server' | 'local'
+const LOCAL_KEY = 'peoplefinder-local-db-v1';
+let localDb = null;
 
-/* ---------- 샘플 데이터 → 화면용 프로필 ---------- */
-// 매너지수가 '50에서 시작해 피드백마다 10%씩' 오른 결과라고 보고 받은 피드백 건수를 역산
-function countFromScore(s) {
-  if (s <= MANNER_START) return 0;
-  return Math.max(1, Math.round(Math.log((100 - s) / (100 - MANNER_START)) / Math.log(1 - MANNER_STEP)));
+function localHash(s) {   // 브라우저 보여주기 모드 전용 (데이터가 이 브라우저 밖으로 나가지 않음)
+  let h = 2166136261;
+  for (let r = 0; r < 3; r++) for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i) + r; h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(16);
 }
-function seedFeedback(id, n) {
-  const praise = [0, 0, 0, 0];
-  for (let k = 0; k < n; k++) {
-    const a = (id * 5 + k * 3) % 4;
-    praise[a]++;
-    if ((id + k) % 3 === 0) praise[(a + 1 + (id % 3)) % 4]++;
-  }
-  const recent = [];
-  if (n > 0) recent.push({ item: (id * 5 + (n - 1) * 3) % 4, ts: Date.now() - (1 + id % 4) * DAY - (id % 7) * 3600000 });
-  if (n > 1) recent.push({ item: (id * 5 + (n - 2) * 3) % 4, ts: Date.now() - (4 + id % 4 + id % 3) * DAY });
-  return { praise, recent };
+function randomToken() {
+  const a = new Uint8Array(24);
+  (window.crypto || {}).getRandomValues ? crypto.getRandomValues(a) : a.forEach((_, i) => { a[i] = Math.random() * 256; });
+  return Array.from(a, b => b.toString(16).padStart(2, '0')).join('');
 }
-const PEOPLE = RAW.profiles.map(p => {
-  const count = countFromScore(p.manner_score);
-  const fb = seedFeedback(p.id, count);
-  const base = {
-    id: p.id,
-    name: p.name,
-    dept: p.department,
-    intro: p.introduction,
-    work: p.work_keywords.map((t, i) => ({ tag: t, exp: kwExp(t, p.id + i) })),
-    interest: p.interest_keywords.map((t, i) => ({ tag: t, exp: kwExp(t, p.id + i) })),
-    status: Math.max(0, STATUS.findIndex(s => s.name === p.contact_status)),
-    manner: p.manner_score,
-    count, praise: fb.praise, recent: fb.recent
-  };
-  const o = S.overrides[p.id];
-  return o ? Object.assign(base, o) : base;
+const localCtx = () => ({
+  now: Date.now(), newToken: randomToken, hashToken: t => 'h' + t,
+  hashPassword: pw => 'local$' + localHash(pw), verifyPassword: (pw, h) => h === 'local$' + localHash(pw)
 });
-const byId = id => PEOPLE.find(p => String(p.id) === String(id));
-const displayName = p => (p.isMe || !MASK_NAMES) ? p.name : p.name.charAt(0) + 'OO';
+function localSave() { try { localStorage.setItem(LOCAL_KEY, JSON.stringify(localDb)); } catch (e) { /* 저장 실패해도 화면은 동작 */ } }
 
-function meProfile() {
-  if (!S.account || !S.me) return null;
+const ready = (async () => {
+  try {
+    const r = await fetch('api/health', { cache: 'no-store' });
+    const j = await r.json();
+    if (r.ok && j.ok) { B.mode = 'server'; return; }
+  } catch (e) { /* 서버 없음 → 브라우저 모드 */ }
+  B.mode = 'local';
+  try { localDb = JSON.parse(localStorage.getItem(LOCAL_KEY)); } catch (e) { localDb = null; }
+  if (!localDb || !Array.isArray(localDb.users)) localDb = PFCore.emptyDb();
+  try {
+    const sample = await (await fetch('data/sample-data.json', { cache: 'no-store' })).json();
+    PFCore.syncSamples(localDb, sample, Date.now());
+  } catch (e) {
+    B.loadError = '샘플 데이터를 불러오지 못했어요. 터미널에서 npm start로 실행한 주소(http://localhost:3000)에서 열어주세요.';
+  }
+  localSave();
+})();
+
+async function api(action, payload = {}) {
+  await ready;
+  if (B.mode === 'local') {
+    try {
+      const out = PFCore.handle(localDb, Object.assign({}, payload, { action, token: B.token }), localCtx());
+      if (out.changed) localSave();
+      return JSON.parse(JSON.stringify(out.data));
+    } catch (e) {
+      if (e.status === 401 && action !== 'login') authLost();
+      throw e;
+    }
+  }
+  let res;
+  try {
+    res = await fetch('api', {
+      method: 'POST',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, B.token ? { Authorization: 'Bearer ' + B.token } : {}),
+      body: JSON.stringify(Object.assign({}, payload, { action }))
+    });
+  } catch (e) {
+    throw Object.assign(new Error('서버에 연결하지 못했어요. 서버가 켜져 있는지 확인해주세요.'), { code: 'NETWORK' });
+  }
+  let data = {};
+  try { data = await res.json(); } catch (e) { /* 빈 응답 */ }
+  if (!res.ok) {
+    if (res.status === 401 && action !== 'login') authLost();
+    throw Object.assign(new Error(data.error || '요청을 처리하지 못했어요.'), { status: res.status, code: data.code });
+  }
+  return data;
+}
+
+/* ---------- 화면 데이터 ---------- */
+const S = { me: null, people: [], keywords: {}, connections: [], thread: null };
+function mapUser(u) {
+  const fill = (list, base) => (list || []).map((k, i) => ({ tag: k.tag, exp: k.exp || (u.sampleId != null ? kwExp(k.tag, base + i) : '') }));
   return {
-    id: 'me', isMe: true, name: S.account.name, dept: S.account.dept,
-    intro: S.me.intro, work: S.me.work, interest: S.me.interest, status: S.me.status,
-    manner: MANNER_START, count: 0, praise: [0, 0, 0, 0], recent: []
+    id: u.id, isSample: u.sampleId != null, name: u.name, dept: u.dept, intro: u.intro || '',
+    work: fill(u.work, u.id), interest: fill(u.interest, u.id), status: u.status,
+    manner: u.manner, count: u.feedbackCount, praise: u.praise || [0, 0, 0, 0], recent: u.recent || [],
+    isMe: !!(S.me && u.id === S.me.id)
   };
 }
+function applyState(st) {
+  if (!st) return;
+  if (st.me) S.me = st.me;
+  if (st.people) S.people = st.people.map(mapUser);
+  if (st.keywords) S.keywords = st.keywords;
+  if (st.connections) S.connections = st.connections;
+}
+const byId = id => S.people.find(p => String(p.id) === String(id));
+const others = () => S.people.filter(p => !p.isMe);
+const meProfile = () => S.people.find(p => p.isMe) || (S.me ? mapUser(S.me) : null);
+const displayName = p => (p.isMe || !MASK_NAMES) ? p.name : p.name.charAt(0) + 'OO';
+const unknownUser = { id: 0, name: '알 수 없음', dept: '', status: 2, intro: '', work: [], interest: [] };
 
 /* ---------- 검색 ---------- */
-// 검색 대상: 샘플 30명 + 내 프로필 (새로 등록한 키워드가 바로 검색되도록)
-function allPeople() { const me = meProfile(); return me ? [...PEOPLE, me] : PEOPLE; }
 function searchPeople(q) {
   const nq = norm(q);
   const catQ = CATS.find(c => norm(c) === nq);   // '언어'처럼 카테고리 이름으로 검색
   const hit = (k, fb) => catQ ? kwCat(k.tag, fb) === catQ : (norm(k.tag).includes(nq) || (nq.length >= 2 && norm(k.exp).includes(nq)));
-  const rows = allPeople().map(p => {
+  const rows = S.people.map(p => {
     if (!nq) return { p, rank: 9, work: [], interest: [] };
     const work = p.work.filter(k => hit(k, '업무')).map(k => k.tag);
     const interest = p.interest.filter(k => hit(k, '취미')).map(k => k.tag);
@@ -626,27 +719,24 @@ function searchPeople(q) {
 }
 function keywordCounts(field) {
   const c = {};
-  allPeople().forEach(p => p[field].forEach(k => { c[k.tag] = (c[k.tag] || 0) + 1; }));
+  S.people.forEach(p => p[field].forEach(k => { c[k.tag] = (c[k.tag] || 0) + 1; }));
   return Object.entries(c).sort((a, b) => b[1] - a[1]);
 }
-// 앱에 등록된 전체 키워드 목록 (카테고리, 등록 인원). 매번 새로 계산하므로 새 키워드가 즉시 반영됨
+// 앱에 등록된 전체 키워드 (카테고리, 등록 인원) — 매번 새로 계산해서 새 키워드가 바로 보임
 function registry() {
   const m = new Map();
   const add = (tag, cat) => { if (!m.has(tag)) m.set(tag, { tag, cat, count: 0, isNew: !KW[tag] }); return m.get(tag); };
-  allPeople().forEach(p => {
+  S.people.forEach(p => {
     p.work.forEach(k => { add(k.tag, kwCat(k.tag, '업무')).count++; });
     p.interest.forEach(k => { add(k.tag, kwCat(k.tag, '취미')).count++; });
   });
   return [...m.values()].sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag, 'ko'));
 }
-function suggestions(q) {
-  const nq = norm(q);
-  if (!nq) return [];
-  return registry().filter(r => norm(r.tag).includes(nq) || norm(r.cat) === nq)
-    .sort((a, b) => (norm(b.tag).startsWith(nq) - norm(a.tag).startsWith(nq)) || b.count - a.count).slice(0, 8);
-}
 function suggHtml(q) {
-  const list = suggestions(q);
+  const nq = norm(q);
+  if (!nq) return '';
+  const list = registry().filter(r => norm(r.tag).includes(nq) || norm(r.cat) === nq)
+    .sort((a, b) => (norm(b.tag).startsWith(nq) - norm(a.tag).startsWith(nq)) || b.count - a.count).slice(0, 8);
   if (!list.length) return '';
   return `<div class="sugg-box"><span class="hint">등록된 키워드</span><div class="row">${list.map(r =>
     `<button class="chip line" data-act="searchKw" data-kw="${esc(r.tag)}">${esc(r.tag)} <span class="n">${r.cat} ${r.count}명</span>${r.isNew ? '<i class="new-dot" title="새로 등록된 키워드"></i>' : ''}</button>`).join('')}</div></div>`;
@@ -666,7 +756,7 @@ function catBrowseHtml() {
 /* ---------- 조각 UI ---------- */
 const octo = (i, size) => `<span class="octo" style="width:${size}px;height:${size}px" aria-hidden="true"><svg><use href="#${STATUS[i].icon}"/></svg></span>`;
 const stateChip = i => `<span class="state ${STATUS[i].cls}"><span class="octo"><svg aria-hidden="true"><use href="#${STATUS[i].icon}"/></svg></span>${STATUS[i].msg}</span>`;
-const avatar = (p, cls = '') => `<div class="avatar ${cls}" aria-hidden="true">${esc(p.name.charAt(0))}</div>`;
+const avatar = (p, cls = '') => `<div class="avatar ${cls}" aria-hidden="true">${esc((p.name || '?').charAt(0))}</div>`;
 
 function personCard(r) {
   const p = r.p;
@@ -677,7 +767,7 @@ function personCard(r) {
     <div class="who">${avatar(p)}<div class="meta"><div class="name">${esc(displayName(p))}${p.isMe ? ' <span class="me-tag">나</span>' : ''}</div><div class="org">${esc(deptLabel(p.dept))}</div></div>${stateChip(p.status)}</div>
     <div class="row">${chips}</div>
     ${p.intro ? `<p class="intro">${esc(p.intro)}</p>` : ''}
-    <div class="card-foot"><button class="btn sub small" data-act="openProfile" data-id="${p.id}">프로필 보기</button></div>
+    <div class="card-foot"><button class="btn sub small" data-act="openProfile" data-id="${p.isMe ? 'me' : p.id}">프로필 보기</button></div>
   </article>`;
 }
 
@@ -705,20 +795,26 @@ function keywordSection(p, field, title, sel) {
   const list = p[field];
   if (!list.length) return '';
   const active = list.find(k => k.tag === sel) || null;
-  const chips = list.map(k => `<button class="chip ${field === 'interest' ? 'line' : ''} ${active && active.tag === k.tag ? 'on' : ''}" data-act="pickExp" data-tag="${esc(k.tag)}" aria-pressed="${active && active.tag === k.tag}">${esc(k.tag)}</button>`).join('');
+  const chips = list.map(k => `<button class="chip ${field === 'interest' ? 'line' : ''} ${active && active.tag === k.tag ? 'on' : ''}" data-act="pickExp" data-tag="${esc(k.tag)}" aria-pressed="${!!(active && active.tag === k.tag)}">${esc(k.tag)}</button>`).join('');
   const box = active ? `<div class="exp-box"><span class="cat">${esc(kwCat(active.tag, field === 'work' ? '업무' : '취미'))}</span><b>${esc(active.tag)}</b><span>${esc(active.exp || '한 줄 경험이 아직 없어요.')}</span></div>` : '';
   return `<section class="stack">
     <div class="section-title"><span class="label">${title}</span><span class="hint">눌러서 경험 보기</span></div>
     <div class="row">${chips}</div>${box}
   </section>`;
 }
+function modeNote() {
+  if (B.mode === 'server') return '가입 정보와 메시지는 서버의 저장소 파일(storage/db.json)에 저장되어 모두와 공유돼요.';
+  if (B.mode === 'local') return '서버 없이 열린 화면이라 가입 정보와 메시지가 이 브라우저에만 저장돼요.';
+  return '';
+}
 
 /* ---------- 화면 상태 ---------- */
 let stack = [];
+const curScreen = () => stack[stack.length - 1];
 const ui = {
   authMode: 'login', authErr: {}, authForm: { name: '', dept: '', email: '', password: '' },
-  q: '', filter: 'all', expSel: null,
-  ob: null, topic: null, draft: '', fbSel: [], bounce: false
+  q: '', filter: 'all', expSel: null, catOpen: false,
+  ob: null, topic: null, draft: '', draftErr: '', reply: '', fbSel: [], fbErr: '', bounce: false
 };
 
 /* ---------- 화면 정의 ---------- */
@@ -729,7 +825,7 @@ const SCREENS = {
     html() {
       const f = ui.authForm, e = ui.authErr, signup = ui.authMode === 'signup';
       const field = (key, label, type, ph, extra = '') => `<label class="field"><span>${label}</span>
-        <input class="input" name="${key}" type="${type}" placeholder="${ph}" value="${esc(f[key])}" data-bind="authForm.${key}" ${extra}>
+        <input class="input" id="auth-${key}" name="${key}" type="${type}" placeholder="${ph}" value="${esc(f[key])}" data-bind="authForm.${key}" ${extra}>
         ${e[key] ? `<span class="err">${e[key]}</span>` : ''}</label>`;
       return `
       <div class="auth-hero">
@@ -742,23 +838,25 @@ const SCREENS = {
         <button role="tab" aria-selected="${signup}" data-act="authMode" data-mode="signup">회원가입</button>
       </div>
       <form class="stack" data-submit="${signup ? 'signup' : 'login'}" novalidate>
-        ${signup ? field('name', '이름', 'text', '이름을 입력해주세요.', 'autocomplete="name"') : ''}
+        ${signup ? field('name', '이름', 'text', '이름을 입력해주세요.', 'autocomplete="name" maxlength="20"') : ''}
         ${signup ? `<label class="field"><span>소속</span>
-          <select class="select" name="dept" data-bind="authForm.dept">
+          <select class="select" id="auth-dept" name="dept" data-bind="authForm.dept">
             <option value="">소속을 선택해주세요.</option>
             ${DEPTS.map(d => `<option value="${d.key}" ${f.dept === d.key ? 'selected' : ''}>${d.label}</option>`).join('')}
           </select>${e.dept ? `<span class="err">${e.dept}</span>` : ''}</label>` : ''}
-        ${field('email', '이메일', 'email', '이메일을 입력해주세요.', 'autocomplete="email"')}
-        ${field('password', '비밀번호', 'password', '비밀번호를 입력해주세요.', `autocomplete="${signup ? 'new-password' : 'current-password'}"`)}
+        ${field('email', '이메일', 'email', '이메일을 입력해주세요.', 'autocomplete="email" maxlength="100"')}
+        ${field('password', '비밀번호', 'password', signup ? '비밀번호를 입력해주세요. (6자 이상)' : '비밀번호를 입력해주세요.', `autocomplete="${signup ? 'new-password' : 'current-password'}" maxlength="100"`)}
+        ${e.form ? `<span class="err">${esc(e.form)}</span>` : ''}
         <div class="actions" style="margin-top:8px">
           <button class="btn" type="submit">${signup ? '다음' : '로그인'}</button>
         </div>
       </form>
-      <p class="hint" style="text-align:center">시연용 화면이에요. 실제 이메일 대신 예시 주소를 써주세요.</p>`;
+      <p class="hint" style="text-align:center">시연용 서비스예요. 다른 곳에서 쓰는 비밀번호는 쓰지 말아주세요.</p>
+      ${B.loadError ? `<p class="err" style="text-align:center">${esc(B.loadError)}</p>` : `<p class="hint mode-note">${modeNote()}</p>`}`;
     }
   },
 
-  /* 2. 프로필 등록 (2단계) */
+  /* 2. 프로필 등록 (1단계: 소개·업무·관심사, 2단계: 연락 상태) */
   onboard: {
     title: '프로필 등록', nav: false,
     html() {
@@ -766,27 +864,27 @@ const SCREENS = {
       const steps = `<div class="steps" aria-label="${o.step} / 2단계"><i class="on"></i><i class="${o.step === 2 ? 'on' : ''}"></i></div>`;
       const has = (field, t) => o[field].some(k => k.tag === t);
       const chip = (field, t) => `<button type="button" class="chip line ${has(field, t) ? 'on' : ''}" data-act="obToggle" data-field="${field}" data-tag="${esc(t)}" aria-pressed="${has(field, t)}">${esc(t)}</button>`;
-      // 카테고리별 선택지 = 기본 선택지 + 새로 등록된 키워드 + 이번에 직접 입력한 키워드
-      const extra = cat => [...Object.keys(S.customKw), ...Object.keys(o.cats), ...o.work.map(k => k.tag), ...o.interest.map(k => k.tag)]
-        .filter(t => kwCat(t, null) === cat || (cat === '취미' && o.interest.some(k => k.tag === t) && !kwCat(t, null)));
       const uniq = a => [...new Set(a)];
+      // 카테고리별 선택지 = 기본 선택지 + 앱에 등록된 새 키워드 + 이번에 직접 입력한 키워드
+      const extra = cat => [...Object.keys(S.keywords), ...Object.keys(o.cats), ...o.work.map(k => k.tag), ...o.interest.map(k => k.tag)]
+        .filter(t => kwCat(t, null) === cat || (cat === '취미' && o.interest.some(k => k.tag === t) && !kwCat(t, null)));
       const workGroups = PICK_WORK.map(([c, base]) => [c, uniq([...base, ...extra(c)])]);
       const interestOpts = uniq([...PICK_INTEREST, ...extra('취미')]);
-      const customs = () => '';
       const expInputs = field => o[field].length ? `<div class="stack-sm" style="margin-top:4px">
           <span class="hint">어떤 경험인지 한 줄로 적어두면 동료가 눌러서 볼 수 있어요. (선택)</span>
           <div class="exp-in">${o[field].map((k, i) => `<span class="chip on">${esc(k.tag)}</span>
-            <input class="input" style="padding:9px 12px;font-size:14px" maxlength="40" placeholder="${esc(KW[k.tag] ? '예: ' + KW[k.tag][1][0] : '예: 어떤 경험인지 한 줄로')}" value="${esc(k.exp)}" data-bind="ob.${field}.${i}.exp" aria-label="${esc(k.tag)} 한 줄 경험">`).join('')}</div></div>` : '';
-      const addRow = field => `<div class="inline-add"><input class="input" maxlength="12" placeholder="목록에 없으면 직접 입력" id="add-${field}" aria-label="키워드 직접 입력" data-enter="obAdd" data-field="${field}">
+            <input class="input" id="exp-${field}-${i}" style="padding:9px 12px;font-size:14px" maxlength="40" placeholder="${esc(KW[k.tag] ? '예: ' + KW[k.tag][1][0] : '예: 어떤 경험인지 한 줄로')}" value="${esc(k.exp)}" data-bind="ob.${field}.${i}.exp" aria-label="${esc(k.tag)} 한 줄 경험">`).join('')}</div></div>` : '';
+      const addRow = field => `<div class="inline-add"><input class="input" maxlength="20" placeholder="목록에 없으면 직접 입력" id="add-${field}" aria-label="키워드 직접 입력" data-enter="obAdd" data-field="${field}">
         ${field === 'work' ? `<select class="select cat-sel" id="addcat-work" aria-label="카테고리"><option value="">자동 분류</option>${PICK_WORK.map(g => `<option value="${g[0]}">${g[0]}</option>`).join('')}</select>` : ''}
         <button type="button" class="btn sub small" data-act="obAdd" data-field="${field}">추가</button></div>
         ${o.note && o.note.field === field ? `<span class="hint" style="color:var(--blue);font-weight:600">${esc(o.note.text)}</span>` : ''}`;
-
-      if (o.step === 1) return `${steps}
+      const head = `${steps}
         <div><h2 class="title-lg">나의 프로필을 만들어주세요</h2>
-        <p class="lead">업무 경험과 관심사를 등록하면 나에게 필요한 동료와 연결될 수 있어요.</p></div>
+        <p class="lead">업무 경험과 관심사를 등록하면 나에게 필요한 동료와 연결될 수 있어요.</p></div>`;
+
+      if (o.step === 1) return `${head}
         <label class="field"><span>한 줄 소개</span>
-          <input class="input" maxlength="50" placeholder="나를 한 문장으로 소개해주세요." value="${esc(o.intro)}" data-bind="ob.intro"></label>
+          <input class="input" id="ob-intro" maxlength="50" placeholder="나를 한 문장으로 소개해주세요." value="${esc(o.intro)}" data-bind="ob.intro"></label>
         <section class="stack">
           <span class="label" style="color:var(--text)">업무 키워드</span>
           <span class="hint" style="margin-top:-6px">경험하거나 잘할 수 있는 업무를 선택해주세요.</span>
@@ -804,9 +902,7 @@ const SCREENS = {
         </section>
         <div class="actions"><button class="btn" data-act="obNext">다음</button></div>`;
 
-      return `${steps}
-        <div><h2 class="title-lg">나의 프로필을 만들어주세요</h2>
-        <p class="lead">업무 경험과 관심사를 등록하면 나에게 필요한 동료와 연결될 수 있어요.</p></div>
+      return `${head}
         <section class="stack" role="radiogroup" aria-label="연락 가능 상태">
           <span class="label" style="color:var(--text)">연락 가능 상태</span>
           <span class="hint" style="margin-top:-6px">현재 연락 가능한 상태를 선택해주세요.</span>
@@ -823,19 +919,21 @@ const SCREENS = {
       const me = meProfile();
       const work = keywordCounts('work').slice(0, 6), interest = keywordCounts('interest').slice(0, 5);
       const myTags = me ? new Set([...me.work, ...me.interest].map(k => k.tag)) : new Set();
-      const picks = PEOPLE.filter(p => p.status === 0)
+      const picks = others().filter(p => p.status === 0)
         .map(p => ({ p, common: [...p.work, ...p.interest].map(k => k.tag).filter(t => myTags.has(t)) }))
         .sort((a, b) => b.common.length - a.common.length || b.p.manner - a.p.manner).slice(0, 3);
       const st = me ? me.status : 0;
+      const incoming = S.connections.filter(c => c.recipientId === S.me.id && c.unread > 0).length;
       return `
       <div><h2 class="title-lg">어떤 동료를<br>찾고 있나요?</h2>
         <p class="lead">업무 경험이나 관심사를 검색해보세요.</p></div>
       <form class="search" role="search" data-submit="homeSearch">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
-        <input name="q" type="search" placeholder="예: Excel, 영어, 러닝, 제조업" aria-label="키워드 검색" autocomplete="off" data-suggest="sugg-home">
+        <input id="q-home" name="q" type="search" placeholder="예: Excel, 영어, 러닝, 제조업" aria-label="키워드 검색" autocomplete="off" data-suggest="sugg-home">
         <button class="go" type="submit">검색</button>
       </form>
       <div id="sugg-home" class="sugg"></div>
+      ${incoming ? `<button class="status-box s2" data-act="tab" data-tab="messages">${octo(1, 40)}<div><b>새로 받은 질문이 ${incoming}개 있어요</b><span class="label">메시지에서 확인하고 답장해보세요</span></div><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>` : ''}
       <section class="stack">
         <div><span class="title-md" style="font-size:16px">추천 키워드</span>
           <p class="hint">많이 등록된 키워드를 확인해보세요.</p></div>
@@ -866,7 +964,6 @@ const SCREENS = {
   search: {
     title: '사람 찾기',
     html() {
-      const me = meProfile();
       let rows = searchPeople(ui.q);
       const hasQ = !!norm(ui.q);
       if (ui.filter === 'available') rows = rows.filter(r => r.p.status === 0);
@@ -879,7 +976,7 @@ const SCREENS = {
       return `
       <form class="search" role="search" data-submit="resultSearch">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
-        <input name="q" type="search" value="${esc(ui.q)}" placeholder="예: Excel, 영어, 러닝, 제조업" aria-label="키워드 검색" autocomplete="off" data-suggest="sugg-search">
+        <input id="q-search" name="q" type="search" value="${esc(ui.q)}" placeholder="예: Excel, 영어, 러닝, 제조업" aria-label="키워드 검색" autocomplete="off" data-suggest="sugg-search">
         <button class="go" type="submit">검색</button>
       </form>
       <div id="sugg-search" class="sugg"></div>
@@ -899,12 +996,13 @@ const SCREENS = {
     title: '프로필',
     html(c) {
       const p = byId(c.id);
+      if (!p) return `<div class="empty">${octo(2, 72)}<b>프로필을 찾지 못했어요.</b></div>`;
       const sel = ui.expSel && ui.expSel.id === p.id ? ui.expSel.tag : null;
       const qHit = norm(ui.q) && [...p.work, ...p.interest].find(k => norm(k.tag).includes(norm(ui.q)));
       const selected = sel || (qHit ? qHit.tag : p.work[0] && p.work[0].tag);
       return `
       <section class="pf-head">${avatar(p, 'lg')}<div><div class="name">${esc(displayName(p))}</div><div class="org">${esc(deptLabel(p.dept))}</div></div></section>
-      <p class="quote">${esc(p.intro)}</p>
+      ${p.intro ? `<p class="quote">${esc(p.intro)}</p>` : ''}
       <div class="status-box ${STATUS[p.status].cls}">${octo(p.status, 48)}
         <div><span class="label">현재 연락 상태</span><b>${STATUS[p.status].name} · ${STATUS[p.status].msg}</b></div></div>
       ${keywordSection(p, 'work', '잘하거나 경험해본 분야', selected)}
@@ -921,7 +1019,7 @@ const SCREENS = {
   connect: {
     title: '질문 보내기', nav: false,
     html(c) {
-      const p = byId(c.id);
+      const p = byId(c.id) || unknownUser;
       const tags = [...p.work, ...p.interest].map(k => k.tag);
       return `
       <div class="between" style="align-items:flex-start">
@@ -937,7 +1035,7 @@ const SCREENS = {
         <div class="row">${QUICK.map(q => `<button class="chip" data-act="quick" data-text="${esc(q)}">${esc(q)}</button>`).join('')}</div>
       </section>
       <label class="stack"><span class="label">메시지</span>
-        <textarea class="textarea" id="draft" placeholder="질문 내용을 입력해주세요." data-bind="draft" maxlength="500">${esc(ui.draft)}</textarea>
+        <textarea class="textarea" id="draft" placeholder="질문 내용을 입력해주세요." data-bind="draft" maxlength="1000">${esc(ui.draft)}</textarea>
         ${ui.draftErr ? `<span class="err">${ui.draftErr}</span>` : ''}
       </label>
       <div class="actions">
@@ -948,61 +1046,78 @@ const SCREENS = {
     }
   },
 
-  /* 메시지 목록 */
+  /* 메시지 목록: 내가 보낸 질문 + 내가 받은 질문 */
   messages: {
     title: '메시지',
     html() {
-      if (!S.messages.length) return `<div class="empty" style="padding-top:60px">${octo(0, 72)}<b>아직 보낸 질문이 없어요.</b><p>필요한 동료를 찾아 질문을 보내보세요.</p>
+      if (!S.connections.length) return `<div class="empty" style="padding-top:60px">${octo(0, 72)}<b>아직 주고받은 메시지가 없어요.</b><p>필요한 동료를 찾아 질문을 보내보세요.</p>
         <button class="btn sub small" style="margin-top:12px" data-act="tab" data-tab="search">사람 찾기</button></div>`;
-      const list = [...S.messages].sort((a, b) => b.sentAt - a.sentAt);
-      return `<div>${list.map(m => {
-        const p = byId(m.toId);
-        const pill = m.status === 'waiting' ? '<span class="pill wait">답변 대기</span>'
-          : m.feedback ? '<span class="pill done">피드백 완료</span>'
-          : m.unread ? '<span class="pill new">새 답변</span>' : '<span class="pill fb">피드백 남기기</span>';
-        return `<button class="msg-row" data-act="openThread" data-mid="${m.id}">${avatar(p)}
-          <div class="meta"><div class="between"><b>${esc(displayName(p))} <span class="hint" style="font-weight:400">${esc(m.topic || '')}</span></b><span class="hint">${ago(m.repliedAt || m.sentAt)}</span></div>
-          <div class="between"><span class="preview">${esc(m.reply || m.text)}</span>${pill}</div></div></button>`;
+      const meId = S.me.id;
+      return `<div>${S.connections.map(c => {
+        const asker = c.askerId === meId;
+        const p = byId(asker ? c.recipientId : c.askerId) || unknownUser;
+        const pill = asker
+          ? (!c.replied ? '<span class="pill wait">답변 대기</span>'
+            : c.unread ? '<span class="pill new">새 답변</span>'
+            : c.feedback ? '<span class="pill done">피드백 완료</span>' : '<span class="pill fb">피드백 남기기</span>')
+          : (c.unread ? '<span class="pill new">새 메시지</span>' : '<span class="pill done">받은 질문</span>');
+        const last = c.last ? (c.last.senderId === meId ? '나: ' : '') + c.last.body : '';
+        return `<button class="msg-row" data-act="openThread" data-cid="${c.id}">${avatar(p)}
+          <div class="meta"><div class="between"><b>${esc(displayName(p))} <span class="hint" style="font-weight:400">${esc(c.topic || '')}</span></b><span class="hint">${ago(c.updatedAt)}</span></div>
+          <div class="between"><span class="preview">${esc(last)}</span>${pill}</div></div></button>`;
       }).join('')}</div>`;
     }
   },
 
-  /* 메시지 상세 + 피드백 */
+  /* 대화 + 답장 + 피드백 */
   thread: {
     title: '메시지', nav: false,
-    html(c) {
-      const m = S.messages.find(x => x.id === c.mid);
-      const p = byId(m.toId);
+    html(cur) {
+      const t = S.thread;
+      if (!t || t.id !== cur.cid) return `<div class="empty">${octo(1, 72)}<b>대화를 불러오는 중이에요.</b></div>`;
+      const meId = S.me.id;
+      const asker = t.askerId === meId;
+      const p = byId(asker ? t.recipientId : t.askerId) || unknownUser;
+      const bubbles = t.messages.map(m => {
+        const mine = m.senderId === meId;
+        return `<div class="bubble ${mine ? 'me' : 'them'}">${esc(m.body)}</div><span class="bubble-meta ${mine ? 'me' : ''}">${ago(m.createdAt)}</span>`;
+      }).join('');
       let fb = '';
-      if (m.status === 'answered' && !m.feedback) {
+      if (asker && t.replied && !t.feedback) {
         fb = `<section class="feedback stack">
           <div><h3 class="title-md" style="font-size:16px">도움을 받았다면 피드백을 남겨주세요.</h3>
           <p class="hint">남긴 피드백은 매너지수에 반영돼요.</p></div>
-          <div class="row">${PRAISE.map((t, i) => `<button class="chip line ${ui.fbSel.includes(i) ? 'on' : ''}" aria-pressed="${ui.fbSel.includes(i)}" data-act="fbToggle" data-i="${i}">${t}</button>`).join('')}</div>
+          <div class="row">${PRAISE.map((x, i) => `<button class="chip line ${ui.fbSel.includes(i) ? 'on' : ''}" aria-pressed="${ui.fbSel.includes(i)}" data-act="fbToggle" data-i="${i}">${x}</button>`).join('')}</div>
           ${ui.fbErr ? `<span class="err">${ui.fbErr}</span>` : ''}
-          <button class="btn" data-act="fbSubmit" data-mid="${m.id}">피드백 남기기</button>
+          <button class="btn" data-act="fbSubmit" data-cid="${t.id}">피드백 남기기</button>
         </section>`;
-      } else if (m.feedback) {
+      } else if (t.feedback) {
         fb = `<section class="feedback stack">
-          <span class="label">남긴 피드백</span>
-          <div class="row">${m.feedback.items.map(i => `<span class="chip on">${PRAISE[i]}</span>`).join('')}</div>
-          <p class="hint">${esc(displayName(p))}님의 매너지수가 ${shownScore(m.feedback.before)}에서 ${shownScore(m.feedback.after)}(으)로 올랐어요. 이 연결에는 피드백을 한 번만 남길 수 있어요.</p>
+          <span class="label">${asker ? '남긴 피드백' : '받은 피드백'}</span>
+          <div class="row">${t.feedback.items.map(i => `<span class="chip on">${PRAISE[i]}</span>`).join('')}</div>
+          <p class="hint">${asker ? esc(displayName(p)) + '님의' : '내'} 매너지수가 ${shownScore(t.feedback.before)}에서 ${shownScore(t.feedback.after)}(으)로 올랐어요.${asker ? ' 이 연결에는 피드백을 한 번만 남길 수 있어요.' : ''}</p>
         </section>`;
+      } else if (!asker) {
+        fb = `<p class="hint" style="text-align:center">답장을 받은 동료가 도움이 됐다면 피드백을 남길 수 있어요.</p>`;
       }
+      const waiting = asker && !t.replied
+        ? `${p.isSample ? '<div class="waiting" aria-label="답변을 기다리는 중"><i></i><i></i><i></i></div>' : ''}<span class="bubble-meta">질문을 보냈어요. 상대방의 답변을 기다려주세요.</span>`
+        : '';
       return `
-      <div class="who">${avatar(p)}<div class="meta"><div class="name">${esc(displayName(p))}</div><div class="org">${esc(deptLabel(p.dept))}</div></div>${stateChip(p.status)}</div>
+      <div class="who">${avatar(p)}<div class="meta"><div class="name">${esc(displayName(p))}</div><div class="org">${esc(deptLabel(p.dept))}${asker ? '' : ' · 나에게 온 질문'}</div></div>${stateChip(p.status)}</div>
       <div class="thread">
-        ${m.topic ? `<span class="chip" style="align-self:center">${esc(m.topic)} 관련 질문</span>` : ''}
-        <div class="bubble me">${esc(m.text)}</div>
-        <span class="bubble-meta me">${ago(m.sentAt)}</span>
-        ${m.status === 'waiting'
-          ? `<div class="waiting" aria-label="답변을 기다리는 중"><i></i><i></i><i></i></div><span class="bubble-meta">질문을 보냈어요. 상대방의 답변을 기다려주세요.</span>`
-          : `<div class="bubble them">${esc(m.reply)}</div><span class="bubble-meta">${ago(m.repliedAt)}</span>`}
+        ${t.topic ? `<span class="chip" style="align-self:center">${esc(t.topic)} 관련 질문</span>` : ''}
+        ${bubbles}
+        ${waiting}
       </div>
+      <form class="composer" data-submit="reply">
+        <textarea class="textarea" id="reply" rows="2" maxlength="1000" placeholder="${asker ? '추가로 보낼 내용을 입력해주세요.' : '답장을 입력해주세요.'}" data-bind="reply" aria-label="메시지 입력">${esc(ui.reply)}</textarea>
+        <button class="btn small" type="submit">보내기</button>
+      </form>
       ${fb}
       <div class="actions">
         <button class="btn sub" data-act="teams">Teams에서 연락하기</button>
-        <button class="textlink" style="align-self:center" data-act="openProfile" data-id="${p.id}">프로필 보기</button>
+        ${p.id ? `<button class="textlink" style="align-self:center" data-act="openProfile" data-id="${p.id}">프로필 보기</button>` : ''}
       </div>`;
     }
   },
@@ -1025,26 +1140,40 @@ const SCREENS = {
       ${mannerBlock(p)}
       <div class="actions">
         <button class="btn sub" data-act="editProfile">프로필 수정</button>
-        <div class="row" style="justify-content:center;gap:18px">
-          <button class="textlink" data-act="logout">로그아웃</button>
-          <button class="textlink" data-act="resetDemo">시연 처음부터 다시 보기</button>
-        </div>
-      </div>`;
+        <button class="textlink" style="align-self:center" data-act="logout">로그아웃</button>
+      </div>
+      <p class="hint mode-note">${modeNote()}</p>`;
     },
     after() { ui.bounce = false; }
   }
 };
 
-/* ---------- 이동 ---------- */
+/* ---------- 이동 · 그리기 ---------- */
 const TABS = ['home', 'search', 'messages', 'me'];
 function go(name, params = {}) { stack.push(Object.assign({ name }, params)); render(true); }
 function replace(name, params = {}) { stack.pop(); go(name, params); }
-function back() { if (stack.length > 1) { stack.pop(); render(true); } }
-function setTab(name) { stack = [{ name }]; ui.expSel = null; render(true); }
+function back() { if (stack.length > 1) { stack.pop(); ui.reply = ''; render(true); } }
+function setTab(name) { stack = [{ name }]; ui.expSel = null; render(true); refreshPeople(); }
+// 탭을 옮길 때 최신 프로필·매너지수를 바로 다시 불러옴
+async function refreshPeople() {
+  if (!B.token) return;
+  try {
+    const before = JSON.stringify([S.people, S.me]);
+    applyState(await api('people'));
+    lastPeople = Date.now();
+    if (JSON.stringify([S.people, S.me]) !== before && !busy && TABS.includes(curScreen().name)) render(false);
+  } catch (e) { /* 다음 확인 때 다시 시도 */ }
+}
 
 function render(scrollTop) {
-  const cur = stack[stack.length - 1];
+  const cur = curScreen();
   const def = SCREENS[cur.name];
+  // 다시 그려도 입력 중이던 칸의 커서가 유지되도록
+  const ae = document.activeElement;
+  const keepId = !scrollTop && ae && ae.id && $('#view').contains(ae) ? ae.id : null;
+  let sel = null;
+  if (keepId) { try { sel = [ae.selectionStart, ae.selectionEnd]; } catch (e) { sel = null; } }
+
   $('#topbar').hidden = def.header === false;
   $('#tabbar').hidden = def.nav === false;
   const t = $('#topTitle');
@@ -1054,11 +1183,16 @@ function render(scrollTop) {
   document.querySelectorAll('.tab').forEach(b => {
     if (b.dataset.tab === root) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
   });
-  $('#msgDot').hidden = !S.messages.some(m => m.unread);
+  $('#msgDot').hidden = !S.connections.some(c => c.unread > 0);
   $('#view').innerHTML = def.html(cur);
   if (def.after) def.after(cur);
   if (scrollTop) window.scrollTo(0, 0);
+  if (keepId) {
+    const el = document.getElementById(keepId);
+    if (el) { el.focus({ preventScroll: true }); if (sel && el.setSelectionRange && sel[0] != null) { try { el.setSelectionRange(sel[0], sel[1]); } catch (e) { /* 선택 불가 입력칸 */ } } }
+  }
 }
+function scrollToEnd() { const c = $('.composer'); if (c) c.scrollIntoView({ block: 'center' }); }
 
 /* ---------- 시트 · 토스트 ---------- */
 let toastTimer;
@@ -1068,7 +1202,7 @@ function toast(msg, sub) {
   toastTimer = setTimeout(() => { $('#toastHost').innerHTML = ''; }, 2800);
 }
 function openStatusSheet() {
-  const cur = S.me.status;
+  const cur = meProfile().status;
   $('#overlay').innerHTML = `<div class="scrim" data-act="closeSheet"><div class="sheet" role="dialog" aria-modal="true" aria-label="연락 가능 상태" data-stop>
     <div class="grip"></div>
     <h3 class="title-md">연락 가능 상태</h3>
@@ -1079,43 +1213,78 @@ function openStatusSheet() {
 }
 function closeSheet() { $('#overlay').innerHTML = ''; }
 
-/* ---------- 답변 시뮬레이션 (상태에 따라 답이 오는 속도가 다름) ---------- */
-const REPLY_DELAY = [3000, 7000, 14000];
-function makeReply(p, m) {
-  const t = m.topic ? m.topic + ' 관련이면 ' : '';
-  return [
-    `네, 편하게 물어보세요! ${t}지금 잠깐 화면 공유로 같이 봐요.`,
-    `확인했어요. 지금 회의 중이라 30분 뒤에 ${t}같이 확인해볼게요.`,
-    `요즘 마감이라 답이 늦었어요. ${t}내일 오전에 5분 정도 시간 괜찮아요.`
-  ][p.status];
+/* ---------- 요청 실행 (중복 클릭 방지 + 오류 안내) ---------- */
+let busy = false;
+async function run(fn) {
+  if (busy) return;
+  busy = true; document.body.classList.add('busy');
+  try { await fn(); }
+  catch (e) { if (e.code !== 'LOGIN_REQUIRED') toast(e.message || '문제가 생겼어요. 다시 시도해주세요.'); }
+  finally { busy = false; document.body.classList.remove('busy'); }
 }
-function tickReplies() {
-  let changed = false;
-  S.messages.forEach(m => {
-    if (m.status !== 'waiting') return;
-    const p = byId(m.toId);
-    if (Date.now() - m.sentAt >= REPLY_DELAY[p.status]) {
-      m.status = 'answered'; m.reply = makeReply(p, m); m.repliedAt = Date.now();
-      const cur = stack[stack.length - 1];
-      m.unread = !(cur && cur.name === 'thread' && cur.mid === m.id);
-      changed = true;
-      toast(`${displayName(p)}님이 답변했어요.`, '메시지에서 확인하고 피드백을 남길 수 있어요.');
+function resetSession() {
+  B.token = null;
+  Object.assign(S, { me: null, people: [], keywords: {}, connections: [], thread: null });
+  Object.assign(ui, { q: '', filter: 'all', expSel: null, ob: null, draft: '', reply: '', fbSel: [], fbErr: '' });
+  ui.authForm.password = '';
+}
+function authLost() {
+  if (!B.token) return;
+  resetSession(); closeSheet();
+  ui.authMode = 'login'; ui.authErr = {};
+  stack = [{ name: 'auth' }]; render(true);
+  toast('다시 로그인해주세요.');
+}
+function afterAuth() {
+  if (!S.me.profileDone) { startOnboard(false); stack = [{ name: 'onboard' }]; render(true); }
+  else setTab('home');
+}
+
+/* ---------- 새 메시지 확인 (주기적으로) ---------- */
+const unreadTotal = list => list.reduce((n, c) => n + (c.unread || 0), 0);
+function updateConnections(list, quiet) {
+  const before = unreadTotal(S.connections);
+  const changed = JSON.stringify(list) !== JSON.stringify(S.connections);
+  S.connections = list;
+  $('#msgDot').hidden = !list.some(c => c.unread > 0);
+  if (!quiet && unreadTotal(list) > before) toast('새 메시지가 왔어요.', '메시지에서 확인할 수 있어요.');
+  return changed;
+}
+let lastPeople = 0;
+async function poll() {
+  if (!B.token || busy || document.hidden) return;
+  const cur = curScreen();
+  try {
+    if (cur.name === 'thread') {
+      const d = await api('thread', { id: cur.cid });
+      if (curScreen() !== cur) return;
+      const grew = !S.thread || d.thread.messages.length !== S.thread.messages.length;
+      const changed = JSON.stringify(d.thread) !== JSON.stringify(S.thread);
+      S.thread = d.thread;
+      updateConnections(d.connections, true);
+      if (changed) { render(false); if (grew) scrollToEnd(); }
+    } else {
+      const d = await api('connections');
+      if (updateConnections(d.connections) && curScreen() === cur && ['messages', 'home'].includes(cur.name)) render(false);
     }
-  });
-  if (changed) {
-    persist();
-    const cur = stack[stack.length - 1];
-    if (cur && (cur.name === 'thread' || cur.name === 'messages')) render(false);
-    else $('#msgDot').hidden = !S.messages.some(m => m.unread);
-  }
+    if (Date.now() - lastPeople > 15000 && ['home', 'search', 'profile', 'me'].includes(curScreen().name)) {
+      lastPeople = Date.now();
+      const before = JSON.stringify(S.people);
+      applyState(await api('people'));
+      if (JSON.stringify(S.people) !== before && !busy) render(false);
+    }
+  } catch (e) { /* 다음 주기에 다시 시도 */ }
 }
+setInterval(poll, POLL_MS);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) poll(); });
 
 /* ---------- 동작 ---------- */
 function startOnboard(editing) {
-  const src = editing && S.me ? JSON.parse(JSON.stringify(S.me)) : { intro: '', work: [], interest: [], status: 0 };
+  const src = editing && S.me
+    ? { intro: S.me.intro || '', work: JSON.parse(JSON.stringify(S.me.work || [])), interest: JSON.parse(JSON.stringify(S.me.interest || [])), status: S.me.status }
+    : { intro: '', work: [], interest: [], status: 0 };
   ui.ob = Object.assign(src, { step: 1, editing, err: '', cats: {}, note: null });
 }
-function enterApp() { setTab('home'); }
 
 const ACT = {
   back,
@@ -1134,7 +1303,7 @@ const ACT = {
     if (!t) { input.focus(); return; }
     // 이미 앱에 있는 키워드면 그 이름·카테고리를 그대로 씀 (대소문자·띄어쓰기 무시)
     const known = registry().find(r => norm(r.tag) === norm(t))
-      || [...Object.keys(KW).map(k => ({ tag: k, cat: KW[k][0] })), ...Object.entries(S.customKw).map(([k, c]) => ({ tag: k, cat: c }))].find(r => norm(r.tag) === norm(t));
+      || [...Object.keys(KW).map(k => ({ tag: k, cat: KW[k][0] })), ...Object.keys(S.keywords).map(k => ({ tag: k, cat: S.keywords[k] }))].find(r => norm(r.tag) === norm(t));
     let cat;
     if (known) { t = known.tag; cat = known.cat; }
     else {
@@ -1152,35 +1321,35 @@ const ACT = {
   },
   obPrev: () => { ui.ob.step = 1; render(true); },
   obStatus: el => { ui.ob.status = +el.dataset.i; render(false); },
-  obSave: () => {
+  obSave: () => run(async () => {
     const o = ui.ob;
-    S.me = {
-      intro: o.intro.trim(),
-      work: o.work.map(k => ({ tag: k.tag, exp: (k.exp || '').trim() })),
-      interest: o.interest.map(k => ({ tag: k.tag, exp: (k.exp || '').trim() })),
-      status: o.status
-    };
-    // 새 키워드를 앱 키워드 목록에 등록 → 사람 찾기·추천 키워드·자동완성에 즉시 반영
-    Object.entries(o.cats).forEach(([t, c]) => {
-      if (S.me.work.some(k => k.tag === t) || S.me.interest.some(k => k.tag === t)) S.customKw[t] = c;
+    const d = await api('saveProfile', {
+      intro: o.intro, status: o.status, newKeywords: o.cats,
+      work: o.work.map(k => ({ tag: k.tag, exp: k.exp || '' })),
+      interest: o.interest.map(k => ({ tag: k.tag, exp: k.exp || '' }))
     });
-    persist();
+    applyState(d.state);
     const editing = o.editing; ui.ob = null;
     if (editing) { setTab('me'); toast('프로필을 저장했어요.'); }
-    else { enterApp(); toast('프로필이 등록됐어요! 이제 필요한 동료를 찾아보세요.'); }
-  },
+    else { setTab('home'); toast('프로필이 등록됐어요! 이제 필요한 동료를 찾아보세요.'); }
+  }),
 
   searchKw: el => { ui.q = el.dataset.kw; ui.filter = 'all'; setTab('search'); },
   seeAvailable: () => { ui.q = ''; ui.filter = 'available'; setTab('search'); },
   filter: el => { ui.filter = el.dataset.f; render(false); },
-  openProfile: el => { ui.expSel = null; if (el.dataset.id === 'me') { setTab('me'); return; } go('profile', { id: +el.dataset.id }); },
+  openProfile: el => {
+    ui.expSel = null;
+    if (el.dataset.id === 'me' || (S.me && String(el.dataset.id) === String(S.me.id))) { setTab('me'); return; }
+    go('profile', { id: +el.dataset.id });
+  },
   pickExp: el => {
-    const cur = stack[stack.length - 1];
+    const cur = curScreen();
     ui.expSel = { id: cur.name === 'me' ? 'me' : cur.id, tag: el.dataset.tag };
     render(false);
   },
   openConnect: el => {
     const p = byId(el.dataset.id);
+    if (!p) return;
     const nq = norm(ui.q);
     const hit = nq && [...p.work, ...p.interest].find(k => norm(k.tag).includes(nq));
     ui.topic = hit ? hit.tag : (p.work[0] && p.work[0].tag) || null;
@@ -1207,75 +1376,71 @@ const ACT = {
   send: el => {
     const text = ($('#draft').value || '').trim();
     if (!text) { ui.draftErr = '질문 내용을 입력해주세요.'; render(false); $('#draft').focus(); return; }
-    const m = { id: 'm' + Date.now(), toId: +el.dataset.id, topic: ui.topic, text, sentAt: Date.now(), status: 'waiting', reply: '', repliedAt: 0, unread: false, feedback: null };
-    S.messages.push(m); persist();
-    ui.draft = ''; ui.fbSel = []; ui.fbErr = '';
-    replace('thread', { mid: m.id });
-    toast('질문을 보냈어요. 상대방의 답변을 기다려주세요.');
+    run(async () => {
+      const d = await api('sendQuestion', { to: +el.dataset.id, topic: ui.topic, body: text });
+      S.thread = d.thread; updateConnections(d.connections, true);
+      ui.draft = ''; ui.reply = ''; ui.fbSel = []; ui.fbErr = '';
+      replace('thread', { cid: d.connectionId });
+      toast('질문을 보냈어요. 상대방의 답변을 기다려주세요.');
+    });
   },
   teams: () => toast('시연 화면에서는 Teams로 이동하지 않아요.', '실제 서비스에서는 Teams 대화창이 열려요.'),
 
-  openThread: el => {
-    const m = S.messages.find(x => x.id === el.dataset.mid);
-    if (m.unread) { m.unread = false; persist(); }
-    ui.fbSel = []; ui.fbErr = '';
-    go('thread', { mid: m.id });
-  },
+  openThread: el => run(async () => {
+    const cid = +el.dataset.cid;
+    const d = await api('thread', { id: cid });
+    S.thread = d.thread; updateConnections(d.connections, true);
+    ui.reply = ''; ui.fbSel = []; ui.fbErr = '';
+    go('thread', { cid });
+    scrollToEnd();
+  }),
   fbToggle: el => {
     const i = +el.dataset.i;
     ui.fbSel = ui.fbSel.includes(i) ? ui.fbSel.filter(x => x !== i) : [...ui.fbSel, i];
     ui.fbErr = ''; render(false);
   },
   fbSubmit: el => {
-    const m = S.messages.find(x => x.id === el.dataset.mid);
-    if (m.feedback) return;                       // 연결 1번당 피드백 1번
     if (!ui.fbSel.length) { ui.fbErr = '칭찬 항목을 1개 이상 골라주세요'; render(false); return; }
-    const p = byId(m.toId);
-    const before = p.manner, after = nextScore(before);
-    const items = [...ui.fbSel].sort();
-    p.manner = after; p.count += 1;
-    items.forEach(i => { p.praise[i] += 1; });
-    p.recent = [{ item: items[0], ts: Date.now() }, ...p.recent].slice(0, 2);
-    S.overrides[p.id] = { manner: p.manner, count: p.count, praise: p.praise, recent: p.recent };
-    m.feedback = { items, before, after };
-    persist(); ui.fbSel = [];
-    render(false);
-    toast('피드백을 남겼어요.', `${displayName(p)}님의 매너지수 ${shownScore(before)} → ${shownScore(after)}`);
+    run(async () => {
+      const d = await api('feedback', { id: +el.dataset.cid, items: ui.fbSel });
+      S.thread = d.thread; applyState(d.state); ui.fbSel = [];
+      render(false);
+      const f = d.thread.feedback, p = byId(d.thread.recipientId) || unknownUser;
+      toast('피드백을 남겼어요.', `${displayName(p)}님의 매너지수 ${shownScore(f.before)} → ${shownScore(f.after)}`);
+    });
   },
 
   openStatus: openStatusSheet,
   closeSheet: (el, ev) => { if (ev.target.closest('[data-stop]')) return; closeSheet(); },
-  setStatus: el => {
-    S.me.status = +el.dataset.i; persist(); closeSheet();
+  setStatus: el => run(async () => {
+    const d = await api('setStatus', { status: +el.dataset.i });
+    applyState(d.state); closeSheet();
     ui.bounce = true; render(false);
     toast(`연락 상태를 바꿨어요. ${STATUS[S.me.status].msg}`);
-  },
+  }),
   editProfile: () => { startOnboard(true); go('onboard'); },
-  logout: () => { S.loggedIn = false; persist(); stack = [{ name: 'auth' }]; ui.authMode = 'login'; render(true); },
-  resetDemo: () => {
-    if (!confirm('보낸 질문, 남긴 피드백, 내 프로필을 모두 지우고 처음 화면으로 돌아갈까요?')) return;
-    try { localStorage.removeItem(STORE); } catch (e) {}
-    location.reload();
-  }
+  logout: () => run(async () => {
+    try { await api('logout'); } catch (e) { /* 이미 만료돼도 로그아웃 처리 */ }
+    resetSession(); ui.authMode = 'login'; ui.authErr = {};
+    stack = [{ name: 'auth' }]; render(true);
+  })
 };
 
 function syncAuth(form) { ['name', 'dept', 'email', 'password'].forEach(k => { if (form.elements[k]) ui.authForm[k] = form.elements[k].value; }); }
-
 const SUBMIT = {
   login(form) {
     syncAuth(form);
     const f = ui.authForm, e = {};
     if (!f.email.trim()) e.email = '이메일을 입력해주세요.';
-    else if (!/^\S+@\S+\.\S+$/.test(f.email.trim())) e.email = '이메일 형식을 확인해주세요.';
     if (!f.password) e.password = '비밀번호를 입력해주세요.';
     ui.authErr = e; if (Object.keys(e).length) { render(false); return; }
-    if (!S.account) {   // 가입 기록이 없으면 시연용 계정으로 들어감
-      S.account = { name: '홍길동', dept: '감사', email: f.email.trim() };
-      S.me = { intro: 'Excel과 영어 자료 정리를 배우고 있어요.', work: [{ tag: 'Excel', exp: '피벗테이블 기초 공부 중' }, { tag: '영어', exp: '영문 메일 작성' }], interest: [{ tag: '러닝', exp: '' }, { tag: '맛집', exp: '' }], status: 0 };
-      toast('시연용 계정으로 로그인했어요.');
-    }
-    S.loggedIn = true; ui.authForm.password = ''; persist();
-    if (!S.me) { startOnboard(false); stack = [{ name: 'onboard' }]; render(true); } else enterApp();
+    run(async () => {
+      try {
+        const d = await api('login', { email: f.email.trim(), password: f.password });
+        B.token = d.token; ui.authForm.password = ''; ui.authErr = {};
+        applyState(d.state); afterAuth();
+      } catch (err) { ui.authErr = { form: err.message }; render(false); }
+    });
   },
   signup(form) {
     syncAuth(form);
@@ -1285,19 +1450,37 @@ const SUBMIT = {
     if (!f.email.trim()) e.email = '이메일을 입력해주세요.';
     else if (!/^\S+@\S+\.\S+$/.test(f.email.trim())) e.email = '이메일 형식을 확인해주세요.';
     if (!f.password) e.password = '비밀번호를 입력해주세요.';
+    else if (f.password.length < 6) e.password = '비밀번호를 6자 이상 입력해주세요.';
     ui.authErr = e; if (Object.keys(e).length) { render(false); return; }
-    S.account = { name: f.name.trim(), dept: f.dept, email: f.email.trim() };   // 비밀번호는 저장하지 않음
-    S.me = null; S.messages = []; S.loggedIn = true; ui.authForm.password = ''; persist();   // 새 가입자는 이전 사람의 메시지를 보지 않음
-    startOnboard(false);
-    stack = [{ name: 'onboard' }]; render(true);
-    toast('가입이 끝났어요. 이제 프로필을 등록해 주세요.');
+    run(async () => {
+      try {
+        const d = await api('signup', { name: f.name.trim(), dept: f.dept, email: f.email.trim(), password: f.password });
+        B.token = d.token; ui.authForm.password = ''; ui.authErr = {};
+        applyState(d.state);
+        startOnboard(false); stack = [{ name: 'onboard' }]; render(true);
+        toast('가입이 끝났어요. 이제 프로필을 등록해 주세요.');
+      } catch (err) {
+        ui.authErr = err.code === 'EMAIL_TAKEN' ? { email: err.message } : { form: err.message };
+        render(false);
+      }
+    });
   },
   homeSearch(form) {
     const q = form.q.value.trim();
     if (!q) { form.q.focus(); return; }
     ui.q = q; ui.filter = 'all'; setTab('search');
   },
-  resultSearch(form) { ui.q = form.q.value.trim(); ui.filter = 'all'; render(false); }
+  resultSearch(form) { ui.q = form.q.value.trim(); ui.filter = 'all'; render(false); },
+  reply() {
+    const body = ($('#reply').value || '').trim();
+    if (!body) { $('#reply').focus(); return; }
+    run(async () => {
+      const d = await api('sendMessage', { id: S.thread.id, body });
+      S.thread = d.thread; updateConnections(d.connections, true);
+      ui.reply = ''; render(false); scrollToEnd();
+      const n = $('#reply'); if (n) n.focus({ preventScroll: true });
+    });
+  }
 };
 
 /* ---------- 이벤트 위임 ---------- */
@@ -1327,14 +1510,105 @@ document.addEventListener('change', ev => { if (ev.target.dataset.bind) ev.targe
 document.addEventListener('keydown', ev => {
   if (ev.key === 'Escape' && $('#overlay').innerHTML) closeSheet();
   if (ev.key === 'Enter' && ev.target.dataset.enter) { ev.preventDefault(); ACT[ev.target.dataset.enter](ev.target); }
+  // 메시지 칸: Enter로 보내기, Shift+Enter로 줄바꿈
+  if (ev.key === 'Enter' && !ev.shiftKey && !ev.isComposing && ev.target.id === 'reply') { ev.preventDefault(); SUBMIT.reply(); }
 });
 
-/* ---------- 시작 ---------- */
-// 페이지를 열 때마다 항상 로그인/회원가입 화면에서 시작 (저장된 프로필·키워드는 그대로 유지)
-S.loggedIn = false; persist();
+
+/* ---------- 첫 화면 인트로: 바다에서 문어들이 떠다니다 손을 잡아요 ----------
+   몸 모양은 기존 문어 3종(밝은·보통·뒤집힌)과 같고, 색과 표정만 달라요.
+   화면을 누르거나 '건너뛰기'를 누르면 바로 로그인 화면으로 넘어가요. */
+const INTRO_OCTOS = [
+  //   몸 색      입 색       처음 표정     손잡은 뒤 표정   흩어진 위치(%)
+  { c: '#F472B6', m: '#fff',    face: 'joy',       sx: 10, sy: 18 },
+  { c: '#34D399', m: '#1E293B', face: 'wink',      sx: 66, sy: 12 },
+  { c: '#A78BFA', m: '#fff',    face: 'grumpy',    to: 'sparkle', flip: true, sx: 42, sy: 60 },
+  { c: '#FBBF24', m: '#1E293B', face: 'surprised', to: 'joy',     sx: 6,  sy: 58 },
+  { c: '#22D3EE', m: '#1E293B', face: 'shy',       sx: 72, sy: 54 }
+];
+const INK = '#1E293B';
+function introFace(kind, m) {
+  const eyes = (r = 7.5) => `<circle cx="48" cy="55" r="${r}" fill="${INK}"/><circle cx="72" cy="55" r="${r}" fill="${INK}"/>`;
+  const shine = '<circle cx="46" cy="53" r="3.2" fill="#fff"/><circle cx="50" cy="57" r="1.4" fill="#fff"/><circle cx="70" cy="53" r="3.2" fill="#fff"/><circle cx="74" cy="57" r="1.4" fill="#fff"/>';
+  switch (kind) {
+    case 'sparkle':   // 반짝 눈 + 웃는 입
+      return eyes() + shine + `<path d="M 54 63 Q 60 70 66 63" stroke="${m}" stroke-width="3.5" stroke-linecap="round" fill="none"/>`;
+    case 'joy':       // ^^ 눈 + 활짝 웃는 입
+      return `<path d="M 42 57 Q 48 48 54 57 M 66 57 Q 72 48 78 57" stroke="${INK}" stroke-width="4" stroke-linecap="round" fill="none"/>`
+        + `<path d="M 52 62 Q 60 74 68 62 Z" fill="${INK}" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/><path d="M 56 67.5 Q 60 64.5 64 67.5 Q 60 71 56 67.5 Z" fill="#FB7185"/>`;
+    case 'wink':      // 윙크 + 메롱
+      return `<path d="M 42 56 Q 48 50 54 56" stroke="${INK}" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="72" cy="55" r="7.5" fill="${INK}"/><circle cx="70" cy="53" r="3.2" fill="#fff"/>`
+        + `<ellipse cx="63" cy="67" rx="3" ry="3.6" fill="#FB7185"/><path d="M 53 62 Q 60 69 67 62" stroke="${m}" stroke-width="3.5" stroke-linecap="round" fill="none"/>`;
+    case 'surprised': // 동그란 눈 + 'o' 입
+      return eyes(8) + `<circle cx="46" cy="52" r="3" fill="#fff"/><circle cx="70" cy="52" r="3" fill="#fff"/><ellipse cx="60" cy="66" rx="3.5" ry="4.5" fill="${INK}"/>`;
+    case 'shy':       // 작은 눈 + 물결 입 (수줍음)
+      return `<circle cx="50" cy="56" r="5" fill="${INK}"/><circle cx="74" cy="56" r="5" fill="${INK}"/><circle cx="49" cy="54.5" r="1.8" fill="#fff"/><circle cx="73" cy="54.5" r="1.8" fill="#fff"/>`
+        + `<path d="M 54 65 q 3 -2.5 6 0 q 3 2.5 6 0" stroke="${m}" stroke-width="3" stroke-linecap="round" fill="none"/>`;
+    case 'grumpy':    // >< 눈 + 시옷 입 (뒤집힌 문어)
+      return `<path d="M 41 50 L 51 57 M 41 57 L 51 50 M 69 50 L 79 57 M 69 57 L 79 50" stroke="${m}" stroke-width="3.5" stroke-linecap="round"/>`
+        + `<path d="M 55 67 L 60 62 L 65 67" stroke="${m}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+  }
+  return '';
+}
+function introOcto(o, i, n) {
+  const legs = `<path d="M 28 82 C 24 92 34 98 38 88 C 42 98 52 98 55 88 C 58 98 68 98 71 88 C 74 98 84 98 88 88 C 92 98 100 90 95 82" stroke="${o.c}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+  const blush = o.face === 'shy' ? 0.95 : 0.7;
+  const arm = (d, hx) => `<path pathLength="1" d="${d}" stroke="${o.c}" stroke-width="7" stroke-linecap="round" fill="none"/><circle class="io-hand" cx="${hx}" cy="60" r="5.5" fill="${o.c}"/>`;
+  return `<div class="io ${o.flip ? 'flip' : ''} ${o.to ? 'swap' : ''}" style="--sx:${o.sx}%;--sy:${o.sy}%;--i:${i};--rx:${(i - (n - 1) / 2)}">
+    <div class="io-bob"><svg viewBox="-5 0 130 120" aria-hidden="true">
+      <g class="io-arms">${i > 0 ? arm('M 30 66 C 18 72 8 68 -1 60', -1) : ''}${i < n - 1 ? arm('M 90 66 C 102 72 112 68 121 60', 121) : ''}</g>
+      <g class="io-body">${legs}
+        <ellipse cx="60" cy="55" rx="36" ry="32" fill="${o.c}"/>
+        <ellipse cx="42" cy="35" rx="7" ry="4" transform="rotate(-30 42 35)" fill="#fff" opacity=".45"/>
+        <ellipse cx="38" cy="63" rx="5.5" ry="3.2" fill="#FF6B8A" opacity="${blush}"/><ellipse cx="82" cy="63" rx="5.5" ry="3.2" fill="#FF6B8A" opacity="${blush}"/>
+        <g class="io-face1">${introFace(o.face, o.m)}</g>${o.to ? `<g class="io-face2">${introFace(o.to, o.m)}</g>` : ''}
+      </g>
+    </svg></div></div>`;
+}
+function playIntro() {
+  const host = $('#intro');
+  if (!host) return;
+  const n = INTRO_OCTOS.length;
+  const W = Math.round(Math.min(88, (Math.min(window.innerWidth, 480) - 20) / n));
+  host.style.setProperty('--w', W + 'px');
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const rays = [12, 38, 66].map((x, k) => `<i class="io-ray" style="left:${x}%;transform:rotate(${-14 + k * 12}deg);animation-delay:${-k * 2}s"></i>`).join('');
+  const bubbles = Array.from({ length: 14 }, () => { const d = rand(6, 16); return `<i class="io-bubble" style="left:${rand(2, 96)}%;width:${d}px;height:${d}px;animation-duration:${rand(5, 10)}s;animation-delay:${-rand(0, 9)}s"></i>`; }).join('');
+  const wave = fill => `<svg viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 Q 100 10 200 40 T 400 40 T 600 40 T 800 40 V 90 H 0 Z" fill="${fill}"/></svg>`;
+  const hearts = Array.from({ length: n - 1 }, (_, i) => `<svg class="io-heart" viewBox="0 0 24 22" style="--hx:${(i + 0.5 - (n - 1) / 2) * W}px;--i:${i}" aria-hidden="true"><path d="M12 21 C 5 15 1 11 1 6.5 A 5.5 5.5 0 0 1 12 4 A 5.5 5.5 0 0 1 23 6.5 C 23 11 19 15 12 21 Z" fill="#fff"/></svg>`).join('');
+  host.innerHTML = `${rays}${bubbles}
+    <div class="io-sea">${wave('rgba(255,255,255,.10)')}${wave('rgba(30,58,138,.55)')}</div>
+    <div role="img" aria-label="바다에서 여러 색깔의 문어들이 떠다니다 서로 손을 잡는 장면">${INTRO_OCTOS.map((o, i) => introOcto(o, i, n)).join('')}${hearts}</div>
+    <div class="io-title"><b>People Finder</b><span>나에게 필요한 경험을 가진 동료를 찾아보세요.</span></div>
+    <button class="io-skip" type="button">건너뛰기</button>`;
+  host.querySelectorAll('.io').forEach(el => { el.style.setProperty('--rx', (parseFloat(el.style.getPropertyValue('--rx')) * W) + 'px'); });
+
+  let done = false;
+  const timers = [];
+  const finish = () => {
+    if (done) return;
+    done = true; timers.forEach(clearTimeout);
+    host.classList.add('out');
+    setTimeout(() => host.remove(), 650);
+    document.removeEventListener('keydown', onKey);
+  };
+  const onKey = e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') finish(); };
+  host.addEventListener('click', finish);
+  document.addEventListener('keydown', onKey);
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    host.classList.add('still', 'linked');               // 움직임 줄이기 설정이면 손잡은 장면만 잠깐 보여줌
+    timers.push(setTimeout(finish, 1800));
+    return;
+  }
+  timers.push(setTimeout(() => host.classList.add('linked'), 1400));
+  timers.push(setTimeout(finish, 4900));
+}
+
+/* ---------- 시작: 항상 로그인/회원가입 화면부터 ---------- */
 stack = [{ name: 'auth' }];
 render(true);
-setInterval(tickReplies, 1000);
+playIntro();
+ready.then(() => { if (curScreen().name === 'auth') render(false); });
 </script>
 </body>
 </html>
